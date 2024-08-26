@@ -1,0 +1,13 @@
+.App {
+  height: 100svh;
+  border: solid gold;
+
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+
+  main {
+    flex: 1;
+    background-color: black;
+  }
+}
