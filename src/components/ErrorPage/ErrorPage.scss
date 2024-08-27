@@ -1,0 +1,19 @@
+.ErrorPage {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 24px;
+  color: #575757;
+
+  h1 {
+    font-size: 7rem;
+  }
+
+  a {
+    text-decoration: underline;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--grey);
+    }
+  }
+}

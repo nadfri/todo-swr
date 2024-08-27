@@ -1,18 +1,22 @@
 import { Route, Routes } from 'react-router-dom';
 import Todos from './components/Todos/Todos';
 import Header from './components/Header/Header';
-import NotFound from './components/NotFound/NotFound';
+import ErrorPage from './components/ErrorPage/ErrorPage';
+import { ErrorBoundary } from 'react-error-boundary';
+import NotFound from './components/ErrorPage/NotFound';
 
 export default function App() {
   return (
-    <div className='App'>
-      <Header />
-      <main>
-        <Routes>
-          <Route path='/' element={<Todos />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
-    </div>
+    <ErrorBoundary FallbackComponent={ErrorPage}>
+      <div className='App'>
+        <Header />
+        <main>
+          <Routes>
+            <Route path='/' element={<Todos />} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        </main>
+      </div>
+    </ErrorBoundary>
   );
 }
