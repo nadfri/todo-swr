@@ -1,6 +1,32 @@
-.Header{
+.Header {
   border-bottom: solid var(--grey) 1px;
   background-color: var(--primary);
   font-size: 2rem;
-  padding-block: 8px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+
+  .header-link {
+    position: relative;
+    display: block;
+    z-index: 1;
+  }
+
+  .header-link::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    z-index: -1;
+    background-color: var(--grey-light);
+    transition: width 0.3s;
+  }
+
+  .header-link:hover::before {
+    width: calc(100% + 24px);
+  }
 }
