@@ -1,0 +1,18 @@
+.Footer {
+  display: grid;
+  place-content: center;
+  height: 60px;
+
+  border-top: solid var(--grey) 1px;
+  background-color: var(--primary);
+
+  a {
+    padding: 10px 6px;
+    border-radius: 10px;
+    transition: background-color 0.2s;
+  }
+
+  a:hover {
+    background-color: #474747;
+  }
+}
