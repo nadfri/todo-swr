@@ -1,19 +1,28 @@
 {
-  "tasks": [
+  "todos": [
     {
       "id": 1,
       "title": "Faire les courses",
-      "completed": false
+      "content": "Acheter du pain, du lait et des oeufs",
+      "completed": false,
+      "completedAt": null,
+      "createdAt": "2021-01-01T10:00:00.000Z"
     },
     {
       "id": 2,
       "title": "Faire du sport",
-      "completed": false
+      "content": "Faire une séance de musculation",
+      "completed": false,
+      "completedAt": null,
+      "createdAt": "2021-01-02T10:00:00.000Z"
     },
     {
       "id": 3,
       "title": "Lire un livre",
-      "completed": true
+      "content": "Lire le livre 'Clean Code' de Robert C. Martin",
+      "completed": true,
+      "completedAt": "2021-01-03T10:00:00.000Z",
+      "createdAt": "2021-01-03T10:00:00.000Z"
     }
   ]
 }
