@@ -1,21 +1,21 @@
-import useSWR from 'swr';
 import './Todos.scss';
 import { TodoType } from '@/types/todoType';
 import Todo from '../Todo/Todo';
+import { useTodos } from '@/utils/service';
 
 export default function Todos() {
-  const endpoint = 'http://localhost:3000/todos';
-
-  const fetcher = (url: string): Promise<TodoType[]> =>
-    fetch(url).then((res) => res.json());
-
-  const { data: todos, error, isLoading } = useSWR<TodoType[]>(endpoint, fetcher);
+  const { todos, error, isLoading } = useTodos();
 
   if (isLoading) return <div>Loading...</div>;
 
-  if (error) return <div>Error loading todos</div>;
+  if (error) throw error;
 
-  if (!todos) return <div>No todos found</div>;
+  if (!todos)
+    return (
+      <div className='Todos'>
+        <h1>No todo today...</h1>
+      </div>
+    );
 
   return (
     <div className='Todos'>
@@ -23,7 +23,7 @@ export default function Todos() {
 
       <ul>
         {todos.map((todo: TodoType) => (
-          <Todo todo={todo} key={todo.id}/>
+          <Todo todo={todo} key={todo.id} />
         ))}
       </ul>
     </div>

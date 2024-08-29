@@ -1,26 +1,12 @@
 import './TodoPage.scss';
-import { TodoType } from '@/types/todoType';
-import useSWR from 'swr';
 import { Navigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import { useTodo } from '@/utils/service';
 
 export default function TodoPage() {
   const { id } = useParams();
 
-  const endpoint = 'http://localhost:3000/todos/' + id;
-
-  const fetcher = async (url: string): Promise<TodoType | null> => {
-    const res = await fetch(url);
-    if (!res.ok) {
-      if (res.status === 404) {
-        return null;
-      }
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-    return res.json();
-  };
-
-  const { data: todo, error, isLoading } = useSWR<TodoType | null>(endpoint, fetcher);
+  const { todo, error, isLoading } = useTodo(id);
 
   if (isLoading) return <div>Loading...</div>;
 

@@ -1,5 +1,5 @@
-import { TodoType } from '@/types/todoType';
 import './Todo.scss';
+import { TodoType } from '@/types/todoType';
 import { Link } from 'react-router-dom';
 
 type TodoProps = {

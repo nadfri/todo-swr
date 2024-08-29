@@ -5,8 +5,8 @@ import { ErrorBoundary } from 'react-error-boundary';
 import Todos from '@/components/Todos/Todos';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
+import TodoPage from '@/components/TodoPage/TodoPage';
 import ErrorPage from '@/components/ErrorPage/ErrorPage';
-import TodoPage from './components/TodoPage/TodoPage';
 
 export default function App() {
   return (
