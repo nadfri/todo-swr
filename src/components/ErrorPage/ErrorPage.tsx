@@ -7,7 +7,7 @@ type ErrorPageProps = {
 };
 
 export default function ErrorPage({ error, notFound }: ErrorPageProps) {
-  console.error(error);
+  if (error) console.error(error);
 
   return (
     <div className='ErrorPage'>
@@ -18,9 +18,7 @@ export default function ErrorPage({ error, notFound }: ErrorPageProps) {
           {(error as Error)?.message || (error as { statusText?: string })?.statusText}
         </i>
 
-        <i>
-          {notFound && 'Page not found'}
-        </i>
+        <i>{notFound && 'Page not found'}</i>
       </p>
 
       <Link to='/'>Go back to the home page</Link>

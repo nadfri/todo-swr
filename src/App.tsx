@@ -1,10 +1,11 @@
 import './App.scss';
 import { Route, Routes } from 'react-router-dom';
-import Todos from './components/Todos/Todos';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
 import { ErrorBoundary } from 'react-error-boundary';
-import ErrorPage from './components/ErrorPage/ErrorPage';
+
+import Todos from '@/components/Todos/Todos';
+import Header from '@/components/Header/Header';
+import Footer from '@/components/Footer/Footer';
+import ErrorPage from '@/components/ErrorPage/ErrorPage';
 
 export default function App() {
   return (
