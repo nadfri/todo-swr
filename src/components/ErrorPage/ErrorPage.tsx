@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom';
 import './ErrorPage.scss';
 
-export default function ErrorPage({ error }: { error: unknown }) {
+type ErrorPageProps = {
+  error?: unknown;
+  notFound?: boolean;
+};
+
+export default function ErrorPage({ error, notFound }: ErrorPageProps) {
   console.error(error);
 
   return (
@@ -11,6 +16,10 @@ export default function ErrorPage({ error }: { error: unknown }) {
       <p>
         <i>
           {(error as Error)?.message || (error as { statusText?: string })?.statusText}
+        </i>
+
+        <i>
+          {notFound && 'Page not found'}
         </i>
       </p>
 

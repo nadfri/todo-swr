@@ -2,10 +2,9 @@ import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 import Todos from './components/Todos/Todos';
 import Header from './components/Header/Header';
-import ErrorPage from './components/ErrorPage/ErrorPage';
-import { ErrorBoundary } from 'react-error-boundary';
-import NotFound from './components/ErrorPage/NotFound';
 import Footer from './components/Footer/Footer';
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorPage from './components/ErrorPage/ErrorPage';
 
 export default function App() {
   return (
@@ -15,7 +14,7 @@ export default function App() {
         <main>
           <Routes>
             <Route path='/' element={<Todos />} />
-            <Route path='*' element={<NotFound />} />
+            <Route path='*' element={<ErrorPage notFound />} />
           </Routes>
         </main>
         <Footer />

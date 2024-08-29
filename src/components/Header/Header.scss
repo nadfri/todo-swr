@@ -24,9 +24,20 @@
     z-index: -1;
     background-color: var(--grey-light);
     transition: width 0.3s;
+    animation: scale 0.5s;
   }
 
   .header-link:hover::before {
     width: calc(100% + 24px);
+  }
+}
+
+@keyframes scale {
+  0% {
+    scale: 0.5;
+    background-color: var(--white);
+  }
+  100% {
+    scale: 1;
   }
 }
