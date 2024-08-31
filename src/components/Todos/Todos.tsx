@@ -1,7 +1,8 @@
 import './Todos.scss';
+import Todo from '@/components/Todo/Todo';
 import { TodoType } from '@/types/todoType';
-import Todo from '../Todo/Todo';
 import { useTodos } from '@/utils/service';
+import AddNewTodo from '../AddNewTodo/AddNewTodo';
 
 export default function Todos() {
   const { todos, error, isLoading } = useTodos();
@@ -19,13 +20,13 @@ export default function Todos() {
 
   return (
     <div className='Todos'>
-      <h1>Todos</h1>
-
       <ul>
         {todos.map((todo: TodoType) => (
           <Todo todo={todo} key={todo.id} />
         ))}
       </ul>
+
+      <AddNewTodo />
     </div>
   );
 }

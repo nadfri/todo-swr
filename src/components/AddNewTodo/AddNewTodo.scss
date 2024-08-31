@@ -1,0 +1,55 @@
+.AddNewTodo {
+  display: grid;
+
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+
+  input,
+  textarea {
+    color: var(--white);
+    background-color: var(--grey-dark);
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    outline: none;
+    box-shadow: inset 0 transparent;
+    transition: box-shadow 0.3s;
+
+    &:focus {
+      box-shadow: inset 0 0 0 1px var(--grey-light);
+    }
+
+    &:focus:invalid {
+      box-shadow: inset 0 0 0 1px var(--danger);
+    }
+  }
+
+  button {
+    display: grid;
+    place-items: center;
+    background-color: var(--grey-dark);
+    color: var(--white);
+
+    border: none;
+    border-radius: 5px;
+    width: 120px;
+
+    .CrossIcon {
+      width: 50px;
+      rotate: (45deg);
+      transition: rotate 0.2s ease-out;
+    }
+
+    &:active {
+      box-shadow: inset 3px 3px 2px #1a1a1a, inset -3px -3px 2px #2e2e2e;
+    }
+    &:hover .CrossIcon {
+      rotate: (135deg);
+    }
+  }
+}

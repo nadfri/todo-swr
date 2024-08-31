@@ -65,10 +65,10 @@ export const createTodo = async (newTodo: TodoType): Promise<TodoType> => {
 
   const createdTodo = await response.json();
   mutate(ENDPOINT); // Revalidation des données
+
   return createdTodo;
 };
 
-// Fonction pour mettre à jour un todo
 export const updateTodo = async (updatedTodo: TodoType): Promise<TodoType> => {
   const response = await fetch(`${ENDPOINT}/${updatedTodo.id}`, {
     method: 'PUT',

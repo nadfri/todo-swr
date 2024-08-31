@@ -1,13 +1,28 @@
 .App {
   height: 100svh;
-  border: solid gold;
 
   display: flex;
   flex-direction: column;
   align-items: space-between;
 
+
+
   main {
     flex: 1;
     padding: 10px;
+    width: min(100%, 900px);
+    margin: auto;
+  }
+
+  &::before {
+    content: "🚀";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    
+    font-size: 50rem; 
+    opacity: 0.02; 
+    z-index: -1;
   }
 }
