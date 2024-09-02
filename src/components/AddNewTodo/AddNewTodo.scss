@@ -20,7 +20,7 @@
     box-shadow: inset 0 transparent;
     transition: box-shadow 0.3s;
 
-    &:focus {
+    &:focus, &:hover {
       box-shadow: inset 0 0 0 1px var(--grey-light);
     }
 
@@ -48,6 +48,7 @@
     &:active {
       box-shadow: inset 3px 3px 2px #1a1a1a, inset -3px -3px 2px #2e2e2e;
     }
+
     &:hover .CrossIcon {
       rotate: (135deg);
     }
