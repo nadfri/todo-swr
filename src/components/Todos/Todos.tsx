@@ -20,7 +20,7 @@ export default function Todos() {
 
   return (
     <div className='Todos'>
-      <ul>
+      <ul className='todos-list'>
         {todos.map((todo: TodoType) => (
           <Todo todo={todo} key={todo.id} />
         ))}

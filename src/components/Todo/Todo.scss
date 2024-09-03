@@ -1,3 +1,54 @@
-.Todo{
-  
+.Todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-inline: 16px;
+  border-radius: 5px;
+  background-color: var(--grey-dark);
+  transition: translate 0.2s, background-color 0.2s, opacity 0.5s;
+
+  &:hover {
+    background-color: var(--grey-light);
+    translate: 10px;
+  }
+
+  .todo-link {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 16px;
+    flex: 1;
+  }
+
+  .todo-completed {
+    display: inline-block;
+    margin-inline: 16px;
+    font-style: italic;
+    color: var(--grey);
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &:hover .todo-completed {
+    color: var(--white);
+  }
+
+  .btn-delete {
+    display: grid;
+    place-items: center;
+    background-color: transparent;
+    color: var(--grey);
+    border: none;
+
+    .CrossIcon {
+      width: 20px;
+      transition: background-color 0.2s;
+    }
+
+    &:hover .CrossIcon {
+      color: var(--danger);
+    }
+  }
 }

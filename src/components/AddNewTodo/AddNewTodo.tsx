@@ -35,6 +35,7 @@ export default function AddNewTodo() {
           name='title-input'
           type='text'
           placeholder='Title*'
+          maxLength={80}
           autoComplete='off'
           required
         />

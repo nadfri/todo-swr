@@ -25,14 +25,6 @@
       "createdAt": "2021-01-03T10:00:00.000Z"
     },
     {
-      "id": "c9a60c12-aa03-4969-8a51-d2e677ea9c08",
-      "title": "ytytyt",
-      "content": "",
-      "completed": false,
-      "completedAt": null,
-      "createdAt": "2024-08-29T20:40:01.273Z"
-    },
-    {
       "id": "74d5474a-e6e5-40b0-ba2b-96780c161ffd",
       "title": "Apprendre NextJS",
       "content": "Version 14",
