@@ -3,7 +3,7 @@ import { TodoType } from '@/types/todoType';
 import { Link } from 'react-router-dom';
 import CrossIcon from '../Icons/CrossIcon';
 import { formatDateByDistance } from '@/utils/formatDateByDistance';
-import { deleteTodo } from '@/utils/service';
+import { deleteTodo, updateTodo } from '@/api/service';
 import { useRef } from 'react';
 
 type TodoProps = {
@@ -12,6 +12,17 @@ type TodoProps = {
 
 export default function Todo({ todo }: TodoProps) {
   const refLi = useRef<HTMLLIElement>(null);
+
+  const handleCompleted = async () => {
+    const newIsCompleted = !todo.isCompleted;
+    const newCompletedAt = newIsCompleted ? new Date() : null;
+
+    updateTodo({
+      ...todo,
+      isCompleted: newIsCompleted,
+      completedAt: newCompletedAt,
+    });
+  };
 
   const handleDelete = () => {
     refLi.current?.classList.add('deleting');
@@ -29,13 +40,23 @@ export default function Todo({ todo }: TodoProps) {
         </span>
 
         {todo.completedAt && (
-          <span className='todo-completed'>{formatDateByDistance(todo.completedAt)}</span>
+          <span className='todo-completed'>
+            {formatDateByDistance(new Date(todo.completedAt))}
+          </span>
         )}
       </Link>
 
-      <button className='btn-delete' onClick={handleDelete}>
-        <CrossIcon className='CrossIcon' />
-      </button>
+      <div className='todo-actions'>
+        <input
+          type='checkbox'
+          className='todo-check'
+          checked={todo.isCompleted}
+          onChange={handleCompleted}
+        />
+        <button className='btn-delete' onClick={handleDelete}>
+          <CrossIcon className='CrossIcon' />
+        </button>
+      </div>
     </li>
   );
 }

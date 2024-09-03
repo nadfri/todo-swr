@@ -1,7 +1,8 @@
 import './TodoPage.scss';
 import { Navigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { useTodo } from '@/utils/service';
+import { useTodo } from '@/api/service';
+import { formatDateByDistance } from '@/utils/formatDateByDistance';
 
 export default function TodoPage() {
   const { id } = useParams();
@@ -17,7 +18,8 @@ export default function TodoPage() {
   return (
     <div className='TodoPage'>
       <h1>{todo.title}</h1>
-      <div>{todo.content}</div>
+      <p>{todo.content}</p>
+      <p>{todo.isCompleted? `Fait ${todo.completedAt && formatDateByDistance(todo.completedAt)}`: 'Non Fait'}</p>
     </div>
   );
 }

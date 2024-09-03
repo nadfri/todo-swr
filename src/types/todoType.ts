@@ -2,7 +2,7 @@ export type TodoType = {
   id: string;
   title: string;
   content: string;
-  completed: boolean;
+  isCompleted: boolean;
   completedAt: Date | null;
   createdAt: Date;
 };

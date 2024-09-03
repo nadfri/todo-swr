@@ -1,6 +1,6 @@
 import './AddNewTodo.scss';
 import { TodoType } from '@/types/todoType';
-import { createTodo } from '@/utils/service';
+import { createTodo } from '@/api/service';
 import CrossIcon from '../Icons/CrossIcon';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -18,7 +18,7 @@ export default function AddNewTodo() {
       id: uuidv4(),
       title: titleTodo.toString(),
       content: contentTodo ? contentTodo.toString() : '',
-      completed: false,
+      isCompleted: false,
       completedAt: null,
       createdAt: new Date(),
     };

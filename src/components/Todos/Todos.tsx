@@ -1,7 +1,7 @@
 import './Todos.scss';
 import Todo from '@/components/Todo/Todo';
 import { TodoType } from '@/types/todoType';
-import { useTodos } from '@/utils/service';
+import { useTodos } from '@/api/service';
 import AddNewTodo from '../AddNewTodo/AddNewTodo';
 
 export default function Todos() {

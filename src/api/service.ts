@@ -1,6 +1,6 @@
 import useSWR, { mutate } from 'swr';
 import { TodoType } from '@/types/todoType';
-import { ENDPOINT } from './constants';
+import { ENDPOINT } from '../utils/constants';
 
 /*Fetch methods*/
 export const fetchTodos = async (): Promise<TodoType[]> => {
@@ -83,8 +83,9 @@ export const updateTodo = async (updatedTodo: TodoType): Promise<TodoType> => {
   }
 
   const updatedData = await response.json();
-  mutate(`${ENDPOINT}/${updatedTodo.id}`); // Revalidation des données spécifiques
-  mutate(ENDPOINT); // Revalidation de la liste complète
+  mutate(`${ENDPOINT}/${updatedTodo.id}`);
+  mutate(ENDPOINT);
+
   return updatedData;
 };
 
