@@ -1,0 +1,50 @@
+@import './reset.scss';
+@import './root.scss';
+@import './fonts.scss';
+@import './animations.scss';
+
+body {
+  min-height: 100svh;
+  margin: 0;
+
+  background-color: #242424;
+  color: var(--white);
+
+  font-family: 'Raleway', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  height: 100svh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  main {
+    position: relative;
+    flex: 1;
+    padding: 10px;
+    width: min(100%, 900px);
+    margin: auto;
+
+    &::before {
+      content: '🚀';
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+
+      font-size: 30rem;
+      opacity: 0.02;
+      z-index: -1;
+      overflow: hidden;
+    }
+  }
+}
