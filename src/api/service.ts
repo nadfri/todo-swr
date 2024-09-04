@@ -49,55 +49,99 @@ export function useTodo(id?: string) {
   return { todo, error, isLoading };
 }
 
-/*CRUD methods*/
-export const createTodo = async (newTodo: TodoType): Promise<TodoType> => {
-  const response = await fetch(ENDPOINT, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
+/*CREATE*/
+export const createTodo = async (newTodo: Omit<TodoType, 'id'>): Promise<TodoType> => {
+  // Optimistic UI update
+  mutate(
+    ENDPOINT,
+    async (currentTodos: TodoType[] = []) => {
+      const response = await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newTodo),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create todo');
+      }
+
+      const createdTodo = (await response.json()) as TodoType;
+
+      return [...currentTodos, createdTodo];
     },
-    body: JSON.stringify(newTodo),
-  });
+    {
+      optimisticData: (currentTodos: TodoType[] = []) => [
+        ...currentTodos,
+        { ...newTodo, id: crypto.randomUUID() },
+      ],
+      rollbackOnError: true,
+      revalidate: false,
+    }
+  );
 
-  if (!response.ok) {
-    throw new Error('Failed to create todo');
-  }
-
-  const createdTodo = await response.json();
-  mutate(ENDPOINT); // Revalidation des données
-
-  return createdTodo;
+  return newTodo as TodoType;
 };
 
+/*UPDATE*/
 export const updateTodo = async (updatedTodo: TodoType): Promise<TodoType> => {
-  const response = await fetch(`${ENDPOINT}/${updatedTodo.id}`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
+  const updateLocalTodos = (todos: TodoType[] = []) =>
+    todos.map((todo) => (todo.id === updatedTodo.id ? updatedTodo : todo));
+
+  //UPDATE CACHE FOR TODOPAGE
+  mutate(`${ENDPOINT}/${updatedTodo.id}`, updatedTodo, false);
+
+  mutate(
+    ENDPOINT,
+    async (todos: TodoType[] = []) => {
+      const response = await fetch(`${ENDPOINT}/${updatedTodo.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedTodo),
+      });
+
+      if (!response.ok) throw new Error('Failed to update todo');
+
+      const updatedData = await response.json();
+
+      return todos.map((todo) => (todo.id === updatedTodo.id ? updatedData : todo));
     },
-    body: JSON.stringify(updatedTodo),
-  });
+    {
+      optimisticData: updateLocalTodos,
+      rollbackOnError: true,
+      revalidate: false,
+    }
+  );
 
-  if (!response.ok) {
-    throw new Error('Failed to update todo');
-  }
-
-  const updatedData = await response.json();
-  mutate(`${ENDPOINT}/${updatedTodo.id}`);
-  mutate(ENDPOINT);
-
-  return updatedData;
+  return updatedTodo;
 };
 
-// Fonction pour supprimer un todo
+/*DELETE*/
 export const deleteTodo = async (id: string): Promise<void> => {
-  const response = await fetch(`${ENDPOINT}/${id}`, {
-    method: 'DELETE',
-  });
+  const removeTodoFromList = (todos: TodoType[] = [], todoId: string) =>
+    todos.filter((todo) => todo.id !== todoId);
 
-  if (!response.ok) {
-    throw new Error('Failed to delete todo');
-  }
+  mutate(
+    ENDPOINT,
+    async (currentTodos: TodoType[] = []) => {
+      const response = await fetch(`${ENDPOINT}/${id}`, {
+        method: 'DELETE',
+      });
 
-  mutate(ENDPOINT); // Revalidation de la liste complète
+      if (!response.ok) {
+        throw new Error('Failed to delete todo');
+      }
+
+      return removeTodoFromList(currentTodos, id);
+    },
+    {
+      optimisticData: (currentTodos: TodoType[] = []) =>
+        removeTodoFromList(currentTodos, id),
+      rollbackOnError: true,
+      revalidate: false,
+    }
+  );
 };

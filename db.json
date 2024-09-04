@@ -21,7 +21,7 @@
       "title": "Lire un livre",
       "content": "Lire le livre 'Clean Code' de Robert C. Martin",
       "isCompleted": true,
-      "completedAt": "2024-09-03T13:47:03.246Z",
+      "completedAt": "2024-09-04T14:12:21.445Z",
       "createdAt": "2021-01-03T10:00:00.000Z"
     },
     {
@@ -31,14 +31,6 @@
       "isCompleted": false,
       "completedAt": null,
       "createdAt": "2024-08-31T19:56:59.952Z"
-    },
-    {
-      "id": "4d6e2388-4d18-4905-8cfb-275f446b7073",
-      "title": "lmlll",
-      "content": "",
-      "completed": false,
-      "completedAt": null,
-      "createdAt": "2024-09-03T12:18:48.066Z"
     }
   ]
 }

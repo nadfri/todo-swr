@@ -9,6 +9,7 @@ import TodoPage from '@/components/TodoPage/TodoPage';
 import ErrorPage from '@/components/ErrorPage/ErrorPage';
 
 export default function App() {
+  
   return (
     <ErrorBoundary FallbackComponent={ErrorPage}>
       <div className='App'>
