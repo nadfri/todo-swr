@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 
-import Todos from '@/components/Todos/Todos';
+import Home from '@/components/Home/Home';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import TodoPage from '@/components/TodoPage/TodoPage';
@@ -15,8 +15,8 @@ export default function App() {
         <Header />
         <main>
           <Routes>
-            <Route path='/' element={<Todos />} />
-            <Route path='todos' element={<Todos />} />
+            <Route path='/' element={<Home />} />
+            <Route path='todos' element={<Home />} />
             <Route path='todos/:id' element={<TodoPage />} />
             <Route path='404' element={<ErrorPage notFound />} />
             <Route path='*' element={<ErrorPage notFound />} />

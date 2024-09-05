@@ -5,12 +5,12 @@
 
   border-radius: 5px;
   background-color: var(--grey-dark);
-  transition: translate 0.2s, background-color 0.2s, opacity 0.5s;
+  transition: scale 0.2s, translate 0.2s, background-color 0.2s, opacity 0.5s;
   animation: slide-in 0.5s;
 
   &:hover {
     background-color: var(--grey-light);
-    translate: 10px;
+    scale: 1.01;
 
     .todo-title.completed {
       color: var(--success);
