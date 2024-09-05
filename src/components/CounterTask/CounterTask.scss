@@ -1,0 +1,39 @@
+.CounterTask {
+  aspect-ratio: 1;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 20px;
+  border-radius: 50%;
+  background-color: var(--grey-light);
+
+  .countner-container {
+    animation: fade-in 0.5s forwards;
+  }
+
+  .counter-completed {
+    display: inline-block;
+    color: var(--success);
+    font-weight: bold;
+    translate: 2px -9px;
+  }
+
+  .counter-rest {
+    display: none;
+    color: var(--danger);
+    font-weight: bold;
+    animation: fade-in 0.5s forwards;
+  }
+
+  &:hover {
+    .counter-rest {
+      display: block;
+    }
+
+    .countner-container {
+      display: none;
+    }
+  }
+}

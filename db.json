@@ -12,8 +12,8 @@
       "id": "2",
       "title": "Faire du sport",
       "content": "Faire une séance de musculation",
-      "isCompleted": false,
-      "completedAt": null,
+      "isCompleted": true,
+      "completedAt": "2024-09-05T18:41:07.821Z",
       "createdAt": "2021-01-02T10:00:00.000Z"
     },
     {
@@ -36,8 +36,8 @@
       "id": "f8ee",
       "title": "44",
       "content": "",
-      "isCompleted": false,
-      "completedAt": null,
+      "isCompleted": true,
+      "completedAt": "2024-09-05T18:48:58.560Z",
       "createdAt": "2024-09-05T16:02:11.117Z"
     }
   ]
