@@ -1,14 +1,47 @@
-@keyframes deleting {
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 6px rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes fade-in {
   from {
-    transform: translateX(0);
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fade-in 0.2s forwards;
+}
+
+@keyframes slide-out {
+  from {
+    translate: 0;
     opacity: 0.5;
   }
   to {
-    transform: translateX(-100%);
+    translate: -100%;
     opacity: 0;
   }
 }
 
 .deleting {
   animation: deleting 0.3s forwards;
+}
+
+@keyframes slide-in {
+  from {
+    translate: -50%;
+    opacity: 0;
+  }
+  to {
+    translate: 0;
+    opacity: 1;
+  }
 }

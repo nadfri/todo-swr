@@ -5,12 +5,9 @@ import CrossIcon from '../Icons/CrossIcon';
 import { formatDateByDistance } from '@/utils/formatDateByDistance';
 import { deleteTodo, updateTodo } from '@/api/service';
 import { useRef } from 'react';
+import CheckBox from '../CheckBox/CheckBox';
 
-type TodoProps = {
-  todo: TodoType;
-};
-
-export default function Todo({ todo }: TodoProps) {
+export default function Todo({ todo }: { todo: TodoType }) {
   const refLi = useRef<HTMLLIElement>(null);
 
   const handleCompleted = async () => {
@@ -25,7 +22,7 @@ export default function Todo({ todo }: TodoProps) {
   };
 
   const handleDelete = () => {
-    refLi.current?.classList.add('deleting');
+    refLi.current?.classList.add('slide-out');
 
     setTimeout(() => {
       deleteTodo(todo.id);
@@ -35,24 +32,19 @@ export default function Todo({ todo }: TodoProps) {
   return (
     <li className='Todo' ref={refLi}>
       <Link to={`/todos/${todo.id}`} className='todo-link'>
-        <span>
+        <span className={todo.isCompleted ? 'todo-title completed' : 'todo-title'}>
           {todo.title} {todo.title}{' '}
         </span>
 
         {todo.completedAt && (
-          <span className='todo-completed'>
+          <span className='todo-date'>
             {formatDateByDistance(new Date(todo.completedAt))}
           </span>
         )}
       </Link>
 
       <div className='todo-actions'>
-        <input
-          type='checkbox'
-          className='todo-check'
-          checked={todo.isCompleted}
-          onChange={handleCompleted}
-        />
+        <CheckBox checked={todo.isCompleted} onChange={handleCompleted} />
         <button className='btn-delete' onClick={handleDelete}>
           <CrossIcon className='CrossIcon' />
         </button>
