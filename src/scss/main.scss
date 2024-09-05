@@ -20,8 +20,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Piste de la barre de défilement */
+::-webkit-scrollbar-track {
+  background: var(--grey-dark);
+}
+
+/* Poignée de la barre de défilement */
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: var(--grey);
+}
+
 .App {
-  height: 100svh;
+  min-height: 100svh;
 
   display: flex;
   flex-direction: column;

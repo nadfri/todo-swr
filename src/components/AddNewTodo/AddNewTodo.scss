@@ -1,5 +1,7 @@
 .AddNewTodo {
-  display: grid;
+  display: flex;
+  gap: 6px;
+  margin-bottom: 32px;
 
   .inputs {
     display: flex;
@@ -20,7 +22,8 @@
     box-shadow: inset 0 transparent;
     transition: box-shadow 0.3s;
 
-    &:focus, &:hover {
+    &:focus,
+    &:hover {
       box-shadow: inset 0 0 0 1px var(--grey-light);
     }
 
