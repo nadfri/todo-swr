@@ -1,11 +1,11 @@
 import './Todo.scss';
-import { TodoType } from '@/types/todoType';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import CrossIcon from '../Icons/CrossIcon';
-import { formatDateByDistance } from '@/utils/formatDateByDistance';
-import { deleteTodo, updateTodo } from '@/api/service';
-import { useRef } from 'react';
 import CheckBox from '../CheckBox/CheckBox';
+import { TodoType } from '@/types/todoType';
+import { deleteTodo, updateTodo } from '@/api/service';
+import { formatDateByDistance } from '@/utils/formatDateByDistance';
 
 export default function Todo({ todo }: { todo: TodoType }) {
   const refLi = useRef<HTMLLIElement>(null);

@@ -2,12 +2,13 @@ import './Todos.scss';
 import Todo from '@/components/Todo/Todo';
 import { TodoType } from '@/types/todoType';
 import { useTodos } from '@/api/service';
-import AddNewTodo from '../AddNewTodo/AddNewTodo';
+import AddNewTodo from '@/components/AddNewTodo/AddNewTodo';
+import Loader from '@/components/Loader/Loader';
 
 export default function Todos() {
   const { todos, error, isLoading } = useTodos();
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loader />;
 
   if (error) throw error;
 
