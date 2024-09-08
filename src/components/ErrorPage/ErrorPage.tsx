@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './ErrorPage.scss';
+import { useErrorBoundary } from "react-error-boundary";
 
 type ErrorPageProps = {
   error?: unknown;
@@ -8,6 +9,8 @@ type ErrorPageProps = {
 
 export default function ErrorPage({ error, notFound }: ErrorPageProps) {
   if (error) console.error(error);
+
+  const { resetBoundary } = useErrorBoundary();
 
   return (
     <div className='ErrorPage'>
@@ -21,7 +24,7 @@ export default function ErrorPage({ error, notFound }: ErrorPageProps) {
         <i>{notFound && 'Page not found'}</i>
       </p>
 
-      <Link to='/'>Go back to the home page</Link>
+      <Link to='/' onClick={resetBoundary}>Go back to the home page</Link>
     </div>
   );
 }

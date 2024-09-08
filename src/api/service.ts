@@ -1,28 +1,11 @@
 import useSWR, { mutate } from 'swr';
 import { TodoType } from '@/types/todoType';
 import { ENDPOINT } from '../utils/constants';
+import { fetchAPI } from './fetchApi';
 
 /*Fetch methods*/
-export const fetchTodos = async (): Promise<TodoType[]> => {
-  const response = await fetch(ENDPOINT);
-  if (!response.ok) {
-    throw new Error('Failed to fetch todos');
-  }
-  return response.json();
-};
-
-export const fetchTodoById = async (id?: string): Promise<TodoType | null> => {
-  if (!id) return null;
-
-  const response = await fetch(`${ENDPOINT}/${id}`);
-  if (!response.ok) {
-    if (response.status === 404) {
-      return null;
-    }
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-  return response.json();
-};
+export const fetchTodos = () => fetchAPI<TodoType[]>(ENDPOINT);
+export const fetchTodoById = (id: string) => fetchAPI<TodoType>(`${ENDPOINT}/${id}`);
 
 /*SWR hooks*/
 export function useTodos() {
@@ -37,7 +20,7 @@ export function useTodos() {
   return { todos, error, isLoading };
 }
 
-export function useTodo(id?: string) {
+export function useTodo(id: string) {
   const {
     data: todo,
     error,

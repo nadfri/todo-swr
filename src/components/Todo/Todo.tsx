@@ -11,13 +11,10 @@ export default function Todo({ todo }: { todo: TodoType }) {
   const refLi = useRef<HTMLLIElement>(null);
 
   const handleCompleted = async () => {
-    const newIsCompleted = !todo.isCompleted;
-    const newCompletedAt = newIsCompleted ? new Date() : null;
-
     updateTodo({
       ...todo,
-      isCompleted: newIsCompleted,
-      completedAt: newCompletedAt,
+      isCompleted: !todo.isCompleted,
+      completedAt: !todo.isCompleted ? new Date() : null,
     });
   };
 
