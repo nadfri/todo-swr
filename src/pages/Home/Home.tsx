@@ -22,6 +22,7 @@ export default function Home() {
   return (
     <div className='Home'>
       <AddNewTodo />
+
       <ul className='todos-list'>
         {todos.map((todo: TodoType) => (
           <Todo todo={todo} key={todo.id} />

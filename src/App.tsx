@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 
-import Home from '@/components/Home/Home';
+import Home from '@/pages/Home/Home';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
-import TodoPage from '@/components/TodoPage/TodoPage';
-import ErrorPage from '@/components/ErrorPage/ErrorPage';
+import TodoPage from '@/pages/TodoPage/TodoPage';
+import ErrorPage from '@/pages/ErrorPage/ErrorPage';
 
 export default function App() {
   
