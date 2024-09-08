@@ -1,0 +1,22 @@
+.BackBtn {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--grey);
+  background-color: var(--grey-dark);
+  border: none;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  transition: color 0.2s, background-color 0.2s;
+
+  &:hover {
+    color: var(--white);
+    background-color: var(--grey-light);
+  }
+
+  .arrow {
+    font-size: 2rem;
+  }
+}

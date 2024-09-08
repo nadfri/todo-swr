@@ -1,0 +1,16 @@
+.Circle {
+  flex-shrink: 0; // Prevents shrinking from flex parent
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+  background-color: var(--danger);
+  --shadow-color: var(--danger);
+
+  animation: shadow-grow 1.5s infinite alternate;
+
+  &.completed {
+    background-color: var(--success);
+    --shadow-color: var(--success);
+  }
+}

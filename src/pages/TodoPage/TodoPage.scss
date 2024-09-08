@@ -1,3 +1,78 @@
-.TodoPage{
+.TodoPage {
+  flex: 1;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+
+  h1 {
+    margin-top: 0;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-transform: uppercase;
+  }
+
+  .content {
+    position: relative;
+    border-radius: 5px;
+    padding: 16px;
+    background-color: var(--grey-dark);
+    min-height: 300px;
+  }
+
+  .date {
+    text-align: right;
+    font-style: italic;
+    color: var(--grey);
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  .btn-container {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+
+    .btn {
+      color: var(--white);
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: none;
+
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      transition: color 0.2s, background-color 0.2s;
+    }
+  }
+
+  .btn-check {
+    background-color: var(--success-light);
+
+    &:hover {
+      background-color: var(--success);
+    }
+
+    &.completed {
+      background-color: var(--warn-light);
+
+      &:hover {
+        background-color: var(--warn);
+      }
+    }
+  }
+
+  .btn-delete {
+    background-color: var(--danger-light);
+
+    &:hover {
+      background-color: var(--danger);
+    }
+  }
 }

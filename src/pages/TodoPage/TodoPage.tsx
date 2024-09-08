@@ -1,12 +1,15 @@
 import './TodoPage.scss';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { useTodo } from '@/api/service';
+import { deleteTodo, updateTodo, useTodo } from '@/api/service';
 import { formatDateByDistance } from '@/utils/formatDateByDistance';
 import Loader from '@/components/Loader/Loader';
+import BackBtn from '@/components/BackBtn/BackBtn';
+import Circle from '@/components/Circle/Circle';
 
 export default function TodoPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const { todo, error, isLoading } = useTodo(id!);
 
@@ -19,15 +22,51 @@ export default function TodoPage() {
 
   if (!todo) return <Navigate to='/404' />;
 
+  const handleCompleted = async () => {
+    await updateTodo({
+      ...todo,
+      isCompleted: !todo.isCompleted,
+      completedAt: !todo.isCompleted ? new Date() : null,
+    });
+  };
+
+  const handleDelete = () => {
+    deleteTodo(todo.id);
+    navigate('/', { replace: true });
+  };
+
   return (
     <div className='TodoPage'>
-      <h1>{todo.title}</h1>
-      <p>{todo.content}</p>
-      <p>
-        {todo.isCompleted
-          ? `Fait ${todo.completedAt && formatDateByDistance(todo.completedAt)}`
-          : 'Non Fait'}
-      </p>
+      <div>
+        <h1 style={{ color: todo.isCompleted ? 'var(--success)' : 'inherit' }}>
+          <span>{todo.title}</span>
+          <Circle isCompleted={todo.isCompleted} />
+        </h1>
+
+        <p className='content'>
+          {todo.content ? todo.content : <i>No description...</i>}
+        </p>
+
+        {todo.isCompleted ? (
+          <p className='date'>{formatDateByDistance(todo.completedAt!)}</p>
+        ) : (
+          <p className='date'>Still in progress...</p>
+        )}
+      </div>
+
+      <div className='btn-container'>
+        <button
+          onClick={handleCompleted}
+          className={todo.isCompleted ? 'btn btn-check completed' : 'btn btn-check'}>
+          {todo.isCompleted ? 'UNDONE' : 'DONE'}
+        </button>
+
+        <button onClick={handleDelete} className='btn btn-delete'>
+          DELETE
+        </button>
+
+        <BackBtn />
+      </div>
     </div>
   );
 }

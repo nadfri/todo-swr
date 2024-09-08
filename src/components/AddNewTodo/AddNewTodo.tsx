@@ -2,8 +2,11 @@ import './AddNewTodo.scss';
 import { TodoType } from '@/types/todoType';
 import { createTodo } from '@/api/service';
 import CrossIcon from '../Icons/CrossIcon';
+import { useRef } from 'react';
 
 export default function AddNewTodo() {
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -25,6 +28,7 @@ export default function AddNewTodo() {
     createTodo(newTodo);
 
     event.currentTarget.reset();
+    inputRef.current?.blur();
   };
 
   return (
@@ -37,6 +41,7 @@ export default function AddNewTodo() {
           maxLength={80}
           autoComplete='off'
           required
+          ref={inputRef}
         />
         <textarea
           name='title-content'
