@@ -30,7 +30,7 @@ export default function Todo({ todo }: { todo: TodoType }) {
     <li className='Todo' ref={refLi}>
       <Link to={`/todos/${todo.id}`} className='todo-link'>
         <span className={todo.isCompleted ? 'todo-title completed' : 'todo-title'}>
-          {todo.title} {todo.title}{' '}
+          {todo.title}{' '}
         </span>
 
         {todo.completedAt && (
