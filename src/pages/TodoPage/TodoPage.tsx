@@ -6,6 +6,7 @@ import { formatDateByDistance } from '@/utils/formatDateByDistance';
 import Loader from '@/components/Loader/Loader';
 import BackBtn from '@/components/BackBtn/BackBtn';
 import Circle from '@/components/Circle/Circle';
+import AddNewTodo from '@/components/AddNewTodo/AddNewTodo';
 
 export default function TodoPage() {
   const { id } = useParams();
@@ -38,7 +39,7 @@ export default function TodoPage() {
   return (
     <div className='TodoPage'>
       <div>
-        <h1 style={{ color: todo.isCompleted ? 'var(--success)' : 'inherit' }}>
+        <h1 className={todo.isCompleted?  'completed' : ''}>
           <span>{todo.title}</span>
           <Circle isCompleted={todo.isCompleted} />
         </h1>
@@ -67,6 +68,8 @@ export default function TodoPage() {
 
         <BackBtn />
       </div>
+
+      <AddNewTodo />
     </div>
   );
 }

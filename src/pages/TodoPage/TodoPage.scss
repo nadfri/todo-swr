@@ -1,9 +1,8 @@
 .TodoPage {
   flex: 1;
-
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+
   gap: 30px;
 
   h1 {
@@ -12,7 +11,11 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    text-transform: uppercase;
+    transition: color 0.2s;
+
+    &.completed {
+      color: var(--success);
+    }
   }
 
   .content {
@@ -20,7 +23,7 @@
     border-radius: 5px;
     padding: 16px;
     background-color: var(--grey-dark);
-    min-height: 300px;
+    height: 85px;
   }
 
   .date {
@@ -74,5 +77,10 @@
     &:hover {
       background-color: var(--danger);
     }
+  }
+
+  .AddNewTodo {
+    margin-top: auto;
+    margin-bottom: 0;
   }
 }

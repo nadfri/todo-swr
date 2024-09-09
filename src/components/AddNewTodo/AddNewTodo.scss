@@ -56,4 +56,12 @@
       rotate: (135deg);
     }
   }
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+    }
+  }
 }

@@ -74,3 +74,13 @@
     box-shadow: 0 0 10px 0px var(--shadow-color);
   }
 }
+
+@keyframes scale {
+  0% {
+    scale: 0.5;
+    background-color: var(--white);
+  }
+  100% {
+    scale: 1;
+  }
+}
