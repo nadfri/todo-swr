@@ -3,9 +3,11 @@ import { TodoType } from '@/types/todoType';
 import { createTodo } from '@/api/service';
 import CrossIcon from '../Icons/CrossIcon';
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function AddNewTodo() {
+export default function AddNewTodo({ redirectToHome }: { redirectToHome?: boolean }) {
   const inputRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -29,6 +31,8 @@ export default function AddNewTodo() {
 
     event.currentTarget.reset();
     inputRef.current?.blur();
+
+    if (redirectToHome) navigate('/');
   };
 
   return (

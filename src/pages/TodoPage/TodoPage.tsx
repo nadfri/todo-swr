@@ -69,7 +69,7 @@ export default function TodoPage() {
         <BackBtn />
       </div>
 
-      <AddNewTodo />
+      <AddNewTodo redirectToHome/>
     </div>
   );
 }
