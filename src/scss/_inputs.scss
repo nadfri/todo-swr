@@ -1,0 +1,20 @@
+.input,
+.textarea {
+  color: var(--white);
+  background-color: var(--grey-dark);
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: inset 0 transparent;
+  transition: box-shadow 0.3s;
+
+  &:focus,
+  &:hover {
+    box-shadow: inset 0 0 0 1px var(--grey-light);
+  }
+
+  &:focus:invalid {
+    box-shadow: inset 0 0 0 1px var(--danger);
+  }
+}

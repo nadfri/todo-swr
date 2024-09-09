@@ -7,12 +7,18 @@ import Loader from '@/components/Loader/Loader';
 import BackBtn from '@/components/BackBtn/BackBtn';
 import Circle from '@/components/Circle/Circle';
 import AddNewTodo from '@/components/AddNewTodo/AddNewTodo';
+import { useRef, useState } from 'react';
+import EditIcon from '@/components/Icons/EditIcon';
 
 export default function TodoPage() {
   const { id } = useParams();
   const navigate = useNavigate();
 
   const { todo, error, isLoading } = useTodo(id!);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const titleRef = useRef<HTMLInputElement>(null);
+  const contentRef = useRef<HTMLTextAreaElement>(null);
 
   if (isLoading) return <Loader />;
 
@@ -31,6 +37,26 @@ export default function TodoPage() {
     });
   };
 
+  const handleUpdate = async () => {
+    const updatedTitle = titleRef.current?.value.trim();
+    const updatedContent = contentRef.current?.value.trim() || '';
+
+    if (!updatedTitle) {
+      titleRef.current?.focus();
+      return;
+    }
+
+    if (updatedTitle !== todo.title || updatedContent !== todo.content) {
+      await updateTodo({
+        ...todo,
+        title: updatedTitle,
+        content: updatedContent,
+      });
+    }
+
+    setIsEditing(false);
+  };
+
   const handleDelete = () => {
     deleteTodo(todo.id);
     navigate('/', { replace: true });
@@ -39,14 +65,38 @@ export default function TodoPage() {
   return (
     <div className='TodoPage'>
       <div>
-        <h1 className={todo.isCompleted?  'completed' : ''}>
-          <span>{todo.title}</span>
+        <h1>
+          <input
+            name='title'
+            className={
+              todo.isCompleted ? 'input title-input completed' : 'input title-input'
+            }
+            type='text'
+            defaultValue={todo.title}
+            placeholder='Title*'
+            readOnly={!isEditing}
+            ref={titleRef}
+            onFocus={() => setIsEditing(true)}
+            onBlur={handleUpdate}
+            title='Cick to edit'
+            required
+          />
           <Circle isCompleted={todo.isCompleted} />
         </h1>
 
-        <p className='content'>
-          {todo.content ? todo.content : <i>No description...</i>}
-        </p>
+        <textarea
+          className='textarea'
+          name='content'
+          defaultValue={todo.content}
+          readOnly={!isEditing}
+          rows={3}
+          maxLength={200}
+          placeholder='No Description...'
+          ref={contentRef}
+          onFocus={() => setIsEditing(true)}
+          onBlur={handleUpdate}
+          title='Cick to edit'
+        />
 
         {todo.isCompleted ? (
           <p className='date'>{formatDateByDistance(todo.completedAt!)}</p>
@@ -56,6 +106,12 @@ export default function TodoPage() {
       </div>
 
       <div className='btn-container'>
+        {isEditing && (
+          <button onClick={handleUpdate} className='btn btn-save fade-in'>
+            SAVE <EditIcon />
+          </button>
+        )}
+
         <button
           onClick={handleCompleted}
           className={todo.isCompleted ? 'btn btn-check completed' : 'btn btn-check'}>
@@ -69,7 +125,7 @@ export default function TodoPage() {
         <BackBtn />
       </div>
 
-      <AddNewTodo redirectToHome/>
+      <AddNewTodo redirectToHome />
     </div>
   );
 }

@@ -10,20 +10,30 @@
     margin-bottom: 60px;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     transition: color 0.2s;
+    gap: 10px;
+  }
+
+  .title-input,
+  .textarea {
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .title-input {
+    flex: 1;
+    font-size: inherit;
+    background-color: transparent;
 
     &.completed {
       color: var(--success);
     }
   }
 
-  .content {
-    position: relative;
-    border-radius: 5px;
-    padding: 16px;
+  .textarea {
+    font-size: 1rem;
+    width: 100%;
     background-color: var(--grey-dark);
-    height: 85px;
   }
 
   .date {
@@ -76,6 +86,14 @@
 
     &:hover {
       background-color: var(--danger);
+    }
+  }
+
+  .btn-save {
+    background-color: var(--success-light);
+
+    &:hover {
+      background-color: var(--success);
     }
   }
 

@@ -2,10 +2,10 @@
   "todos": [
     {
       "id": "1",
-      "title": "TEst",
+      "title": "Faire les courses",
       "content": "Acheter du pain, du lait et des oeufs",
-      "isCompleted": false,
-      "completedAt": null,
+      "isCompleted": true,
+      "completedAt": "2024-09-09T13:41:05.680Z",
       "createdAt": "2021-01-01T10:00:00.000Z"
     },
     {
@@ -34,10 +34,10 @@
     },
     {
       "id": "8840",
-      "title": "iuiu",
+      "title": "Test",
       "content": "",
-      "isCompleted": false,
-      "completedAt": null,
+      "isCompleted": true,
+      "completedAt": "2024-09-09T15:19:41.814Z",
       "createdAt": "2024-09-08T18:18:27.135Z"
     }
   ]
