@@ -2,13 +2,13 @@ import './TodoPage.scss';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { deleteTodo, updateTodo, useTodo } from '@/api/service';
-import { formatDateByDistance } from '@/utils/formatDateByDistance';
 import Loader from '@/components/Loader/Loader';
 import BackBtn from '@/components/BackBtn/BackBtn';
 import Circle from '@/components/Circle/Circle';
 import AddNewTodo from '@/components/AddNewTodo/AddNewTodo';
 import { useRef, useState } from 'react';
 import EditIcon from '@/components/Icons/EditIcon';
+import DateCompleted from '@/components/DateCompleted/DateCompleted';
 
 export default function TodoPage() {
   const { id } = useParams();
@@ -72,6 +72,7 @@ export default function TodoPage() {
               todo.isCompleted ? 'input title-input completed' : 'input title-input'
             }
             type='text'
+            maxLength={80}
             defaultValue={todo.title}
             placeholder='Title*'
             readOnly={!isEditing}
@@ -98,11 +99,7 @@ export default function TodoPage() {
           title='Cick to edit'
         />
 
-        {todo.isCompleted ? (
-          <p className='date'>{formatDateByDistance(todo.completedAt!)}</p>
-        ) : (
-          <p className='date'>Still in progress...</p>
-        )}
+        <DateCompleted todo={todo} />
       </div>
 
       <div className='btn-container'>

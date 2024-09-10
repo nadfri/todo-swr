@@ -5,7 +5,7 @@ import CrossIcon from '../Icons/CrossIcon';
 import CheckBox from '../CheckBox/CheckBox';
 import { TodoType } from '@/types/todoType';
 import { deleteTodo, updateTodo } from '@/api/service';
-import { formatDateByDistance } from '@/utils/formatDateByDistance';
+import DateCompleted from '../DateCompleted/DateCompleted';
 
 export default function Todo({ todo }: { todo: TodoType }) {
   const refLi = useRef<HTMLLIElement>(null);
@@ -28,16 +28,12 @@ export default function Todo({ todo }: { todo: TodoType }) {
 
   return (
     <li className='Todo' ref={refLi}>
-      <Link to={`/todos/${todo.id}`} className='todo-link'>
+      <Link to={`/todos/${todo.id}`} className='todo-link' draggable={false}>
         <span className={todo.isCompleted ? 'todo-title completed' : 'todo-title'}>
           {todo.title}{' '}
         </span>
 
-        {todo.completedAt && (
-          <span className='todo-date'>
-            {formatDateByDistance(new Date(todo.completedAt))}
-          </span>
-        )}
+        <DateCompleted todo={todo} />
       </Link>
 
       <div className='todo-actions'>

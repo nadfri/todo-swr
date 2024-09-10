@@ -1,0 +1,13 @@
+.DateCompleted {
+  display: inline-flex;
+  align-items: center;
+  font-style: italic;
+  color: var(--grey);
+  white-space: nowrap;
+  float: right;
+  transition: color 0.2s;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
