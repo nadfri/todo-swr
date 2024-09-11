@@ -2,10 +2,13 @@
   position: sticky;
   top: 0;
   z-index: 1;
+
   border-bottom: solid var(--grey) 1px;
   background-color: var(--grey-dark);
+
   font-size: 2.2rem;
   height: 80px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,6 +19,7 @@
     position: relative;
     display: block;
     z-index: 1;
+    font-family: 'Bruno Ace SC', sans-serif;
   }
 
   .header-link::before {
@@ -34,5 +38,18 @@
 
   .header-link:hover::before {
     width: calc(100% + 24px);
+  }
+
+  .header-title {
+    background: linear-gradient(
+      90deg,
+      var(--white) 0%,
+      var(--grey) 50%,
+      var(--white) 100%
+    );
+    background-clip: text;
+    background-size: 200%;
+    color: transparent;
+    animation: wave 15s infinite linear;
   }
 }
