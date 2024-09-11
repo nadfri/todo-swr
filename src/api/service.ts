@@ -38,19 +38,10 @@ export const createTodo = async (newTodo: Omit<TodoType, 'id'>): Promise<TodoTyp
   mutate(
     ENDPOINT,
     async (currentTodos: TodoType[] = []) => {
-      const response = await fetch(ENDPOINT, {
+      const createdTodo = await fetchAPI<TodoType>(ENDPOINT, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify(newTodo),
       });
-
-      if (!response.ok) {
-        throw new Error('Failed to create todo');
-      }
-
-      const createdTodo = (await response.json()) as TodoType;
 
       return [...currentTodos, createdTodo];
     },
@@ -67,7 +58,7 @@ export const createTodo = async (newTodo: Omit<TodoType, 'id'>): Promise<TodoTyp
   return newTodo as TodoType;
 };
 
-/*UPDATE*/
+/*UPDATE ONE TODO*/
 export const updateTodo = async (updatedTodo: TodoType): Promise<TodoType> => {
   const updateLocalTodos = (todos: TodoType[] = []) =>
     todos.map((todo) => (todo.id === updatedTodo.id ? updatedTodo : todo));
@@ -78,17 +69,10 @@ export const updateTodo = async (updatedTodo: TodoType): Promise<TodoType> => {
   mutate(
     ENDPOINT,
     async (todos: TodoType[] = []) => {
-      const response = await fetch(`${ENDPOINT}/${updatedTodo.id}`, {
+      const updatedData = await fetchAPI<TodoType>(`${ENDPOINT}/${updatedTodo.id}`, {
         method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify(updatedTodo),
       });
-
-      if (!response.ok) throw new Error('Failed to update todo');
-
-      const updatedData = await response.json();
 
       return todos.map((todo) => (todo.id === updatedTodo.id ? updatedData : todo));
     },
@@ -110,13 +94,9 @@ export const deleteTodo = async (id: string): Promise<void> => {
   mutate(
     ENDPOINT,
     async (currentTodos: TodoType[] = []) => {
-      const response = await fetch(`${ENDPOINT}/${id}`, {
+      await fetchAPI<void>(`${ENDPOINT}/${id}`, {
         method: 'DELETE',
       });
-
-      if (!response.ok) {
-        throw new Error('Failed to delete todo');
-      }
 
       return removeTodoFromList(currentTodos, id);
     },
