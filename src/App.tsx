@@ -6,9 +6,9 @@ import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import TodoPage from '@/pages/TodoPage/TodoPage';
 import ErrorPage from '@/pages/ErrorPage/ErrorPage';
+import SandBox from './components/SandBox/SandBox';
 
 export default function App() {
-  
   return (
     <ErrorBoundary FallbackComponent={ErrorPage}>
       <div className='App'>
@@ -18,6 +18,7 @@ export default function App() {
             <Route path='/' element={<Home />} />
             <Route path='todos' element={<Home />} />
             <Route path='todos/:id' element={<TodoPage />} />
+            <Route path='sandbox' element={<SandBox />} />
             <Route path='404' element={<ErrorPage notFound />} />
             <Route path='*' element={<ErrorPage notFound />} />
           </Routes>
