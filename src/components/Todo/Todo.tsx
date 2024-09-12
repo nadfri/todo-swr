@@ -6,6 +6,7 @@ import CheckBox from '../CheckBox/CheckBox';
 import { TodoType } from '@/types/todoType';
 import { deleteTodo, updateTodo } from '@/api/service';
 import DateCompleted from '../DateCompleted/DateCompleted';
+import DragIcon from '../Icons/DragIcon';
 
 type TodoProps = React.ComponentPropsWithoutRef<'li'> & {
   todo: TodoType;
@@ -79,6 +80,7 @@ export default function Todo({
       onDragLeave={handleDragLeave}
       onDragEnd={handleDragEnd}
       onDrop={handleDrop}>
+      <DragIcon className='DragIcon' />
       <Link to={`/todos/${todo.id}`} className='todo-link' draggable={false}>
         <span className={todo.isCompleted ? 'todo-title completed' : 'todo-title'}>
           {todo.title}{' '}

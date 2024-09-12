@@ -52,4 +52,19 @@
     color: transparent;
     animation: wave 15s infinite linear;
   }
+
+  @media screen and (max-width: 600px) {
+    font-size: 1.5rem;
+
+    .header-link::before {
+      top: -14px;
+      left: -14px;
+      width: 60px;
+      height: 60px;
+    }
+
+    .header-title {
+      margin-left: 10px;
+    }
+  }
 }

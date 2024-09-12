@@ -2,6 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
+  cursor: move;
 
   border-radius: 5px;
   background-color: var(--grey-dark);
@@ -29,7 +31,7 @@
     display: flex;
     justify-content: space-between;
     gap: 10px;
-    padding: 16px 10px;
+    padding-block: 16px;
     flex: 1;
   }
 
@@ -71,6 +73,10 @@
   }
 
   /*Drag and Drop*/
+  .DragIcon {
+    color: var(--grey);
+  }
+
   &.dragging {
     opacity: 1;
     border: dashed 1px var(--white);
@@ -79,5 +85,11 @@
   &.drag-over {
     opacity: 1;
     border: dashed 1px var(--success);
+  }
+
+  @media screen and (max-width: 600px) {
+    .DateCompleted {
+      display: none;
+    }
   }
 }
