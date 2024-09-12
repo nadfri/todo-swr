@@ -6,7 +6,7 @@
   border-radius: 5px;
   background-color: var(--grey-dark);
   transition: scale 0.2s, translate 0.2s, background-color 0.2s, opacity 0.5s;
-  animation: slide-in 0.5s;
+  animation: slide-in 0.2s;
 
   &:hover {
     background-color: var(--grey-light);
@@ -18,6 +18,10 @@
 
     .DateCompleted {
       color: var(--white);
+    }
+
+    .CheckBox::before {
+      background-color: var(--success);
     }
   }
 
@@ -60,6 +64,10 @@
     &:hover .CrossIcon {
       color: var(--danger);
     }
+  }
+
+  .CheckBox::before {
+    background-color: var(--success-light);
   }
 
   /*Drag and Drop*/
