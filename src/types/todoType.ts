@@ -5,4 +5,5 @@ export type TodoType = {
   isCompleted: boolean;
   completedAt: Date | null;
   createdAt: Date;
+  order: number;
 };

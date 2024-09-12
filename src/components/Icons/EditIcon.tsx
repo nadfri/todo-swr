@@ -5,7 +5,7 @@ export default function EditIcon(props: React.SVGProps<SVGSVGElement>) {
       fill='none'
       viewBox='0 0 24 24'
       width={16}
-      stroke-width='1.5'
+      strokeWidth='1.5'
       stroke='currentColor'
       className={props.className || ''}>
       <path
