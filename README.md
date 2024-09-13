@@ -12,7 +12,7 @@ This project aims to test caching with ```useSWR``` in a Todo List application. 
 1. Clone the repository:
 
 ```sh
-git clone https://github.com/your-username/todo-swr.git
+git clone https://github.com/nadfri/todo-swr.git
 cd todo-swr
 ```
 
@@ -37,7 +37,6 @@ npm run dev
 # or
 yarn dev
 ```
-
 
 ## Project Structure
 - src/components: React components used in the application.
