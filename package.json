@@ -18,7 +18,8 @@
     "react-error-boundary": "^4.0.13",
     "react-router-dom": "^6.26.2",
     "sass-embedded": "^1.78.0",
-    "swr": "^2.2.5"
+    "swr": "^2.2.5",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.10.0",

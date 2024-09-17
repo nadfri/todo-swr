@@ -1,6 +1,14 @@
 # Todo List React + TypeScript + useSWR + Vite
 
-This project aims to test caching with ```useSWR``` in a Todo List application. It also serves as a playground to test custom drag and drop functionality and others.
+This project aims to test caching with `useSWR` in a Todo List application. It also serves as a playground to test custom drag and drop functionality and others.
+
+## Libraries
+
+- **SWR**: Used for managing `cache` in HTTP requests, allowing efficient data fetching, caching, and synchronization in React.
+- **Json-Server**: Simulates a RESTful server quickly using a `db.json` file, acting as a mock backend.
+- **Zod**: A TypeScript schema validation library used to ensure the safety and validity of data handled in the application.
+- **Date-fns**: Provides the most comprehensive, yet simple and consistent toolset for manipulating JavaScript dates
+
 
 ## Prerequisites
 
@@ -27,7 +35,9 @@ yarn install
 
 1. Start the JSON server:
 ```sh
-npx json-server --watch db.json --port 3000
+npm run server
+# or
+npx json-server --watch db.json --port 3001
 ```
 
 2. Start the Vite application:

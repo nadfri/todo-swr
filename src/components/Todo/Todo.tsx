@@ -28,7 +28,7 @@ export default function Todo({
     updateTodo({
       ...todo,
       isCompleted: !todo.isCompleted,
-      completedAt: !todo.isCompleted ? new Date() : null,
+      completedAt: !todo.isCompleted ? new Date().toISOString() : null,
     });
   };
 

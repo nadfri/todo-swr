@@ -1,13 +1,13 @@
 import './TodoPage.scss';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { deleteTodo, updateTodo, useTodo } from '@/api/service';
+import Circle from '@/components/Circle/Circle';
 import Loader from '@/components/Loader/Loader';
 import BackBtn from '@/components/BackBtn/BackBtn';
-import Circle from '@/components/Circle/Circle';
-import AddNewTodo from '@/components/AddNewTodo/AddNewTodo';
-import { useRef, useState } from 'react';
 import EditIcon from '@/components/Icons/EditIcon';
+import { Navigate, useNavigate } from 'react-router-dom';
+import AddNewTodo from '@/components/AddNewTodo/AddNewTodo';
+import { deleteTodo, updateTodo, useTodo } from '@/api/service';
 import DateCompleted from '@/components/DateCompleted/DateCompleted';
 
 export default function TodoPage() {
@@ -33,7 +33,7 @@ export default function TodoPage() {
     await updateTodo({
       ...todo,
       isCompleted: !todo.isCompleted,
-      completedAt: !todo.isCompleted ? new Date() : null,
+      completedAt: !todo.isCompleted ? new Date().toISOString() : null,
     });
   };
 

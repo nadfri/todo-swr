@@ -1,8 +1,9 @@
+import { z } from 'zod';
 import useSWR, { mutate } from 'swr';
-import { TodoType } from '@/types/todoType';
-import { ENDPOINT } from '../utils/constants';
-import { fetchAPI } from './fetchApi';
+import { fetchAPI } from './fetchAPI';
+import { ENDPOINT } from '@/utils/constants';
 import { swapTodosOrder } from '@/utils/swapTodosOrder';
+import { CreateTodoType, TodoSchema, TodoType } from '@/types/todoType';
 
 const CONFIG_SWR = {
   revalidateOnFocus: false,
@@ -11,9 +12,15 @@ const CONFIG_SWR = {
 };
 
 /*Fetch methods*/
-export const fetchTodos = () => fetchAPI<TodoType[]>(ENDPOINT);
+export const fetchTodos = async () => {
+  const todos = await fetchAPI<TodoType[]>(ENDPOINT, {}, z.array(TodoSchema));
+  return z.array(TodoSchema).parse(todos);
+};
 
-export const fetchTodoById = (id: string) => fetchAPI<TodoType>(`${ENDPOINT}/${id}`);
+export const fetchTodoById = async (id: string) => {
+  const todo = await fetchAPI<TodoType>(`${ENDPOINT}/${id}`);
+  return TodoSchema.parse(todo);
+};
 
 /*SWR hooks*/
 export function useTodos() {
@@ -39,10 +46,8 @@ export function useTodo(id: string) {
 }
 
 /*CREATE*/
-export const createTodo = async (
-  newTodo: Omit<TodoType, 'id' | 'order'>
-): Promise<TodoType> => {
-  // Optimistic UI update
+export const createTodo = async (newTodo: CreateTodoType) => {
+  //OPTIMISTIC UPDATE
   mutate(
     ENDPOINT,
     async (currentTodos: TodoType[] = []) => {
@@ -51,23 +56,27 @@ export const createTodo = async (
         body: JSON.stringify({ ...newTodo, order: currentTodos.length + 1 }),
       });
 
-      return [...currentTodos, createdTodo];
+      const parsedCreatedTodo = TodoSchema.parse(createdTodo);
+
+      return [...currentTodos, parsedCreatedTodo];
     },
     {
       optimisticData: (currentTodos: TodoType[] = []) => [
         ...currentTodos,
-        { ...newTodo, id: crypto.randomUUID(), order: currentTodos.length + 1 },
+        {
+          ...newTodo,
+          id: crypto.randomUUID(),
+          order: currentTodos.length + 1,
+        },
       ],
       rollbackOnError: true,
       revalidate: false,
     }
   );
-
-  return newTodo as TodoType;
 };
 
 /*UPDATE ONE TODO*/
-export const updateTodo = async (updatedTodo: TodoType): Promise<TodoType> => {
+export const updateTodo = async (updatedTodo: TodoType) => {
   const updateLocalTodos = (todos: TodoType[] = []) =>
     todos.map((todo) => (todo.id === updatedTodo.id ? updatedTodo : todo));
 
@@ -82,8 +91,10 @@ export const updateTodo = async (updatedTodo: TodoType): Promise<TodoType> => {
         body: JSON.stringify(updatedTodo),
       });
 
+      const parsedUpdatedData = TodoSchema.parse(updatedData);
+
       return currentTodos.map((todo) =>
-        todo.id === updatedTodo.id ? updatedData : todo
+        todo.id === updatedTodo.id ? parsedUpdatedData : todo
       );
     },
     {
@@ -92,15 +103,10 @@ export const updateTodo = async (updatedTodo: TodoType): Promise<TodoType> => {
       revalidate: false,
     }
   );
-
-  return updatedTodo;
 };
 
 /*UPDATE TODOS ORDER*/
-export const updateOrderTodos = async (
-  todo1: TodoType,
-  todo2: TodoType
-): Promise<void> => {
+export const updateOrderTodos = async (todo1: TodoType, todo2: TodoType) => {
   mutate(
     ENDPOINT,
     async (currentTodos: TodoType[] = []) => {
@@ -127,7 +133,7 @@ export const updateOrderTodos = async (
 };
 
 /*DELETE*/
-export const deleteTodo = async (id: string): Promise<void> => {
+export const deleteTodo = async (id: string) => {
   const removeTodoFromList = (todos: TodoType[] = [], todoId: string) =>
     todos.filter((todo) => todo.id !== todoId);
 

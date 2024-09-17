@@ -6,7 +6,7 @@ export default function DateCompleted({ todo }: { todo: TodoType }) {
   return (
     <span className='DateCompleted'>
       {todo.isCompleted
-        ? formatDateByDistance(todo.completedAt!)
+        ? formatDateByDistance(new Date(todo.completedAt!))
         : 'Still in progress...'}
     </span>
   );
