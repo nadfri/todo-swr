@@ -4,11 +4,11 @@ import CounterTask from '../CounterTask/CounterTask';
 
 export default function Header() {
   return (
-    <div className='Header'>
+    <header className='Header'>
       <Link to='/' className='header-link'>
         🚀 <span className='header-title'>TODO with SWR</span>
       </Link>
       <CounterTask />
-    </div>
+    </header>
   );
 }

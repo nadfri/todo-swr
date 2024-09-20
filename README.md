@@ -5,9 +5,13 @@ This project aims to test caching with `useSWR` in a Todo List application. It a
 ## Libraries
 
 - **SWR**: Used for managing `cache` in HTTP requests, allowing efficient data fetching, caching, and synchronization in React.
-- **Json-Server**: Simulates a RESTful server quickly using a `db.json` file, acting as a mock backend.
-- **Zod**: A TypeScript schema validation library used to ensure the safety and validity of data handled in the application.
-- **Date-fns**: Provides the most comprehensive, yet simple and consistent toolset for manipulating JavaScript dates
+- **json-Server**: Simulates a RESTful server quickly using a `db.json` file, acting as a mock backend.
+- **zod**: A TypeScript schema validation library used to ensure the safety and validity of data handled in the application.
+- **date-fns**: Provides the most comprehensive, yet simple and consistent toolset for manipulating JavaScript dates
+- **react-error-boundary**: The simplest way to render a default "something went wrong" type of error message
+- **Vitest**: Fast unit testing framework
+- **react-testing-library**: Solution to test React Components
+- **msw** : The simplest way to mock a server to use in tests
 
 
 ## Prerequisites
@@ -46,6 +50,15 @@ npx json-server --watch db.json --port 3001
 npm run dev
 # or
 yarn dev
+```
+
+## Testing
+
+1. Start vitest:
+```sh
+npm run vitest
+# or for coverage
+npm run coverage
 ```
 
 ## Project Structure
