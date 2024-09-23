@@ -12,15 +12,11 @@ const CONFIG_SWR = {
 };
 
 /*Fetch methods*/
-export const fetchTodos = async () => {
-  const todos = await fetchAPI<TodoType[]>(ENDPOINT, {}, z.array(TodoSchema));
-  return z.array(TodoSchema).parse(todos);
-};
+export const fetchTodos = async () =>
+  await fetchAPI<TodoType[]>(ENDPOINT, {}, z.array(TodoSchema));
 
-export const fetchTodoById = async (id: string) => {
-  const todo = await fetchAPI<TodoType>(`${ENDPOINT}/${id}`);
-  return TodoSchema.parse(todo);
-};
+export const fetchTodoById = async (id: string) =>
+  await fetchAPI<TodoType>(`${ENDPOINT}/${id}`, {}, TodoSchema);
 
 /*SWR hooks*/
 export function useTodos() {
@@ -51,21 +47,23 @@ export const createTodo = async (newTodo: CreateTodoType) => {
   mutate(
     ENDPOINT,
     async (currentTodos: TodoType[] = []) => {
-      const createdTodo = await fetchAPI<TodoType>(ENDPOINT, {
-        method: 'POST',
-        body: JSON.stringify({ ...newTodo, order: currentTodos.length + 1 }),
-      });
+      const createdTodo = await fetchAPI<TodoType>(
+        ENDPOINT,
+        {
+          method: 'POST',
+          body: JSON.stringify({ ...newTodo, order: currentTodos.length + 1 }),
+        },
+        TodoSchema
+      );
 
-      const parsedCreatedTodo = TodoSchema.parse(createdTodo);
-
-      return [...currentTodos, parsedCreatedTodo];
+      return [...currentTodos, createdTodo];
     },
     {
       optimisticData: (currentTodos: TodoType[] = []) => [
         ...currentTodos,
         {
           ...newTodo,
-          id: crypto.randomUUID(),
+          id: crypto.randomUUID(), // temp id for optimistic update
           order: currentTodos.length + 1,
         },
       ],
