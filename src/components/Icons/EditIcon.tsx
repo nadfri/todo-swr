@@ -1,6 +1,7 @@
 export default function EditIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
+      aria-hidden='true'
       xmlns='http://www.w3.org/2000/svg'
       fill='none'
       viewBox='0 0 24 24'

@@ -2,6 +2,7 @@ export default function DragIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
+      aria-hidden='true'
       className={props.className || ''}
       width={16}
       height={16}
