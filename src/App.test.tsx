@@ -1,4 +1,4 @@
-import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 
@@ -29,10 +29,7 @@ describe('App', () => {
       </MemoryRouter>
     );
 
-    const loader = screen.getByLabelText('loading');
-    await waitForElementToBeRemoved(loader);
-
-    const inputElement = screen.getByPlaceholderText('Title*');
+    const inputElement = await screen.findByPlaceholderText('Title*');
     expect(inputElement).toBeInTheDocument();
   });
 
@@ -43,10 +40,7 @@ describe('App', () => {
       </MemoryRouter>
     );
 
-    const loader = screen.getByLabelText('loading');
-    await waitForElementToBeRemoved(loader);
-
-    const inputElements = screen.getAllByPlaceholderText('Title*');
+    const inputElements = await screen.findAllByPlaceholderText('Title*');
     expect(inputElements.length).toBe(2);
   });
 

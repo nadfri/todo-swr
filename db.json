@@ -2,43 +2,43 @@
   "todos": [
     {
       "id": "1",
-      "order": 2,
+      "order": 1,
       "title": "Faire les courses",
       "content": "Acheter du pain, du lait et des oeufs",
       "isCompleted": true,
-      "completedAt": "2024-09-12T18:33:33.250Z",
+      "completedAt": "2024-09-23T18:50:29.001Z",
       "createdAt": "2021-01-01T10:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "order": 2,
+      "title": "Lire un livre",
+      "content": "Lire le livre 'Clean Code' de Robert C. Martin",
+      "isCompleted": true,
+      "completedAt": "2024-09-23T18:50:27.784Z",
+      "createdAt": "2021-01-03T10:00:00.000Z"
     },
     {
       "id": "3",
       "order": 3,
-      "title": "Lire un livre",
-      "content": "Lire le livre 'Clean Code' de Robert C. Martin",
-      "isCompleted": false,
-      "completedAt": null,
-      "createdAt": "2021-01-03T10:00:00.000Z"
+      "title": "Apprendre NextJS",
+      "content": "Version 14",
+      "isCompleted": true,
+      "completedAt": "2024-09-23T18:50:23.193Z",
+      "createdAt": "2024-08-31T19:56:59.952Z"
     },
     {
       "id": "4",
       "order": 4,
-      "title": "Apprendre NextJS",
-      "content": "Version 14",
+      "title": "Compare with react Query",
+      "content": "",
       "isCompleted": true,
-      "completedAt": "2024-09-10T14:32:55.936Z",
-      "createdAt": "2024-08-31T19:56:59.952Z"
+      "completedAt": "2024-09-23T18:50:25.377Z",
+      "createdAt": "2024-09-11T15:33:32.621Z"
     },
     {
       "id": "5",
       "order": 5,
-      "title": "Compare with react Query",
-      "content": "",
-      "isCompleted": false,
-      "completedAt": null,
-      "createdAt": "2024-09-11T15:33:32.621Z"
-    },
-    {
-      "id": "6",
-      "order": 1,
       "title": "Apprendre useSWR",
       "content": "",
       "isCompleted": false,
