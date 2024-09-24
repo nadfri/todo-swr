@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from './App';
+import userEvent from '@testing-library/user-event';
 
 describe('Simplest Test True', () => {
   it('true is true', () => {
@@ -52,5 +53,27 @@ describe('App', () => {
     );
 
     expect(screen.getByText(/page not found/i)).toBeInTheDocument();
+  });
+
+  //test create new todo
+  it('should create new Todo', async () => {
+    const user = userEvent.setup();
+    render(
+      <MemoryRouter initialEntries={['/']}>
+        <App />
+      </MemoryRouter>
+    );
+
+    const titleInput = screen.getByPlaceholderText('Title*');
+    const contentInput = screen.getByPlaceholderText('Description...');
+    const submitButton = screen.getByRole('button', { name: /add new todo/i });
+
+    await user.type(titleInput, 'Test Todo');
+    await user.type(contentInput, 'Test description');
+    await user.click(submitButton);
+
+    expect(titleInput).toHaveValue('');
+    expect(contentInput).toHaveValue('');
+    expect(screen.getByText('Test Todo')).toBeInTheDocument();
   });
 });

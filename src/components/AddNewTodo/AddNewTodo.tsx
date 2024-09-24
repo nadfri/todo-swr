@@ -56,7 +56,7 @@ export default function AddNewTodo({ redirectToHome }: { redirectToHome?: boolea
           placeholder='Description...'
         />
       </div>
-      <button type='submit'>
+      <button type='submit' aria-label='Add new todo'>
         <CrossIcon className='CrossIcon' />
       </button>
     </form>
