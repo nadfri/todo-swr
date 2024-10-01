@@ -1,7 +1,7 @@
 import './TodoPage.scss';
 import { useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Circle from '@/components/Circle/Circle';
+import Circle from '@/components/CircleLed/CircleLed';
 import Loader from '@/components/Loader/Loader';
 import BackBtn from '@/components/BackBtn/BackBtn';
 import EditIcon from '@/components/Icons/EditIcon';
@@ -53,7 +53,6 @@ export default function TodoPage() {
         content: updatedContent,
       });
     }
-
     setIsEditing(false);
   };
 
@@ -79,7 +78,7 @@ export default function TodoPage() {
             ref={titleRef}
             onFocus={() => setIsEditing(true)}
             onBlur={handleUpdate}
-            title='Cick to edit'
+            title='Click to edit title'
             required
           />
           <Circle isCompleted={todo.isCompleted} />
@@ -96,7 +95,7 @@ export default function TodoPage() {
           ref={contentRef}
           onFocus={() => setIsEditing(true)}
           onBlur={handleUpdate}
-          title='Cick to edit'
+          title='Click to edit content'
         />
 
         <DateCompleted todo={todo} />

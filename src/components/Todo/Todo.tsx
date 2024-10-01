@@ -91,7 +91,7 @@ export default function Todo({
 
       <div className='todo-actions'>
         <CheckBox checked={todo.isCompleted} onChange={handleCompleted} />
-        <button className='btn-delete' onClick={handleDelete}>
+        <button className='btn-delete' onClick={handleDelete} aria-label='delete todo'>
           <CrossIcon className='CrossIcon' />
         </button>
       </div>
