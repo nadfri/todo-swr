@@ -17,7 +17,14 @@ export default defineConfig({
     setupFiles: ['test-setup.ts'],
     css: true,
     coverage: {
-      provider: 'v8'
+      provider: 'v8',
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern',
+      },
     },
   },
 });

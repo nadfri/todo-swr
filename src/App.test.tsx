@@ -25,16 +25,6 @@ describe('Home Page usecases', () => {
     expect(screen.getByRole('contentinfo')).toBeInTheDocument(); //contentinfo for footer in aria
   });
 
-  it('should render the notFound page for unknown routes', () => {
-    render(
-      <MemoryRouter initialEntries={['/unknow']}>
-        <App />
-      </MemoryRouter>
-    );
-
-    expect(screen.getByText(/page not found/i)).toBeInTheDocument();
-  });
-
   it('should render input Title', async () => {
     renderComponent();
 
@@ -62,5 +52,15 @@ describe('Home Page usecases', () => {
     expect(contentInput).toHaveValue('');
 
     expect(screen.getByText(TITLE)).toBeInTheDocument();
+  });
+
+  it('should render the notFound page for unknown routes', () => {
+    render(
+      <MemoryRouter initialEntries={['/unknow']}>
+        <App />
+      </MemoryRouter>
+    );
+
+    expect(screen.getByText(/page not found/i)).toBeInTheDocument();
   });
 });
