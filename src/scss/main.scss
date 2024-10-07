@@ -9,8 +9,9 @@ body {
   min-height: 100svh;
   margin: 0;
 
-  background-color: #242424;
-  color: var(--white);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
 
   font-family: 'Raleway', sans-serif;
   font-optical-sizing: auto;

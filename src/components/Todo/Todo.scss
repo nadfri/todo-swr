@@ -19,7 +19,7 @@
     }
 
     .DateCompleted {
-      color: var(--white);
+      color: var(--text-color);
     }
 
     .CheckBox::before {
@@ -79,7 +79,7 @@
 
   &.dragging {
     opacity: 1;
-    border: dashed 1px var(--white);
+    border: dashed 1px var(--text-color);
   }
 
   &.drag-over {

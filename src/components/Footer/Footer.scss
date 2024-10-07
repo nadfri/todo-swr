@@ -1,9 +1,9 @@
 .Footer {
+  position: relative;
   display: grid;
   place-content: center;
   height: 60px;
 
-  border-top: solid var(--grey) 1px;
   background-color: var(--grey-dark);
 
   a {

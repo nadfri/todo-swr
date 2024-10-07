@@ -65,6 +65,21 @@
   animation: slide-to-left 0.3s forwards;
 }
 
+@keyframes slide-to-right {
+  from {
+    translate: -100px;
+    opacity: 0;
+  }
+  to {
+    translate: 0%;
+    opacity: 1;
+  }
+}
+
+.slide-to-right {
+  animation: slide-to-right 0.2s forwards;
+}
+
 @keyframes shadow-grow {
   0% {
     box-shadow: 0 0 0px 0px var(--shadow-color);
@@ -78,7 +93,7 @@
 @keyframes scale {
   0% {
     scale: 0.5;
-    background-color: var(--white);
+    background-color: var(--text-color);
   }
   100% {
     scale: 1;

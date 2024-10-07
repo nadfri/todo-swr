@@ -62,7 +62,7 @@ export default function TodoPage() {
   };
 
   return (
-    <div className='TodoPage'>
+    <div className='TodoPage slide-to-right'>
       <div>
         <h1>
           <input

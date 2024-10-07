@@ -8,6 +8,7 @@ export default function Header() {
       <Link to='/' className='header-link'>
         🚀 <span className='header-title'>TODO with SWR</span>
       </Link>
+
       <CounterTask />
     </header>
   );
