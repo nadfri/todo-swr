@@ -11,13 +11,13 @@ describe('ErrorPage', () => {
         <ErrorBoundary FallbackComponent={ErrorPage}>
           <ErrorPage error={error} />
         </ErrorBoundary>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     expect(screen.getByText('Oops!')).toBeInTheDocument();
 
     expect(
-      screen.getByText('Sorry, an unexpected error has occurred.')
+      screen.getByText('Sorry, an unexpected error has occurred.'),
     ).toBeInTheDocument();
 
     expect(screen.getByText('Test error message')).toBeInTheDocument();
@@ -29,13 +29,13 @@ describe('ErrorPage', () => {
         <ErrorBoundary FallbackComponent={ErrorPage}>
           <ErrorPage notFound={true} />
         </ErrorBoundary>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     expect(screen.getByText('Oops!')).toBeInTheDocument();
 
     expect(
-      screen.getByText('Sorry, an unexpected error has occurred.')
+      screen.getByText('Sorry, an unexpected error has occurred.'),
     ).toBeInTheDocument();
 
     expect(screen.getByText('Page not found')).toBeInTheDocument();
@@ -47,13 +47,13 @@ describe('ErrorPage', () => {
         <ErrorBoundary FallbackComponent={ErrorPage}>
           <ErrorPage />
         </ErrorBoundary>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     expect(screen.getByText('Go back to the home page')).toBeInTheDocument();
 
     expect(
-      screen.getByRole('link', { name: 'Go back to the home page' })
+      screen.getByRole('link', { name: 'Go back to the home page' }),
     ).toHaveAttribute('href', '/');
   });
 });

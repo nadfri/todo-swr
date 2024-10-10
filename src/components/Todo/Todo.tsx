@@ -72,27 +72,34 @@ export default function Todo({
   return (
     <li
       {...rest}
-      className='Todo'
+      className="Todo"
       ref={refLi}
       onDragStart={handleDragStart}
       onDragOver={handleDragOver}
       onDragEnter={handleDragEnter}
       onDragLeave={handleDragLeave}
       onDragEnd={handleDragEnd}
-      onDrop={handleDrop}>
-      <DragIcon className='DragIcon' />
-      <Link to={`/todos/${todo.id}`} className='todo-link' draggable={false}>
-        <span className={todo.isCompleted ? 'todo-title completed' : 'todo-title'}>
+      onDrop={handleDrop}
+    >
+      <DragIcon className="DragIcon" />
+      <Link to={`/todos/${todo.id}`} className="todo-link" draggable={false}>
+        <span
+          className={todo.isCompleted ? 'todo-title completed' : 'todo-title'}
+        >
           {todo.title}{' '}
         </span>
 
         <DateCompleted todo={todo} />
       </Link>
 
-      <div className='todo-actions'>
+      <div className="todo-actions">
         <CheckBox checked={todo.isCompleted} onChange={handleCompleted} />
-        <button className='btn-delete' onClick={handleDelete} aria-label='delete todo'>
-          <CrossIcon className='CrossIcon' />
+        <button
+          className="btn-delete"
+          onClick={handleDelete}
+          aria-label="delete todo"
+        >
+          <CrossIcon className="CrossIcon" />
         </button>
       </div>
     </li>

@@ -5,7 +5,7 @@ export const TodoSchema = z.object({
   title: z.string(),
   content: z.string(),
   isCompleted: z.boolean(),
-  completedAt: z.string().nullable(), 
+  completedAt: z.string().nullable(),
   createdAt: z.string(),
   order: z.number(),
 });

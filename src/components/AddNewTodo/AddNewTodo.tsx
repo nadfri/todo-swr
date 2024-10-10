@@ -5,7 +5,11 @@ import CrossIcon from '../Icons/CrossIcon';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function AddNewTodo({ redirectToHome }: { redirectToHome?: boolean }) {
+export default function AddNewTodo({
+  redirectToHome,
+}: {
+  redirectToHome?: boolean;
+}) {
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
@@ -36,28 +40,28 @@ export default function AddNewTodo({ redirectToHome }: { redirectToHome?: boolea
   };
 
   return (
-    <form className='AddNewTodo' onSubmit={handleSubmit}>
-      <div className='inputs'>
+    <form className="AddNewTodo" onSubmit={handleSubmit}>
+      <div className="inputs">
         <input
-          className='input'
-          name='title-input'
-          type='text'
-          placeholder='Title*'
+          className="input"
+          name="title-input"
+          type="text"
+          placeholder="Title*"
           maxLength={80}
-          autoComplete='off'
+          autoComplete="off"
           required
           ref={inputRef}
         />
         <textarea
-          className='textarea'
-          name='title-content'
+          className="textarea"
+          name="title-content"
           rows={3}
           maxLength={200}
-          placeholder='Description...'
+          placeholder="Description..."
         />
       </div>
-      <button type='submit' aria-label='Add new todo'>
-        <CrossIcon className='CrossIcon' />
+      <button type="submit" aria-label="Add new todo">
+        <CrossIcon className="CrossIcon" />
       </button>
     </form>
   );

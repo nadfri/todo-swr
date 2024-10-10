@@ -14,7 +14,7 @@ describe('Home Page usecases', () => {
     render(
       <MemoryRouter initialEntries={['/']}>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
   it('should render the Home page by default', () => {
@@ -58,7 +58,7 @@ describe('Home Page usecases', () => {
     render(
       <MemoryRouter initialEntries={['/unknow']}>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     expect(screen.getByText(/page not found/i)).toBeInTheDocument();

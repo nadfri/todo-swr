@@ -3,7 +3,7 @@ import './Loader.scss';
 
 export default function Loader() {
   return (
-    <div className='Loader'>
+    <div className="Loader">
       <LoaderIcon />
     </div>
   );

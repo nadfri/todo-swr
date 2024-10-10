@@ -23,11 +23,11 @@ export default function TodoPage() {
   if (isLoading) return <Loader />;
 
   if (error) {
-    if (error.status === 404) return <Navigate to='/404' />;
+    if (error.status === 404) return <Navigate to="/404" />;
     throw error;
   }
 
-  if (!todo) return <Navigate to='/404' />;
+  if (!todo) return <Navigate to="/404" />;
 
   const handleCompleted = async () => {
     await updateTodo({
@@ -62,59 +62,64 @@ export default function TodoPage() {
   };
 
   return (
-    <div className='TodoPage slide-to-right'>
+    <div className="TodoPage slide-to-right">
       <div>
         <h1>
           <input
-            name='title'
+            name="title"
             className={
-              todo.isCompleted ? 'input title-input completed' : 'input title-input'
+              todo.isCompleted
+                ? 'input title-input completed'
+                : 'input title-input'
             }
-            type='text'
+            type="text"
             maxLength={80}
             defaultValue={todo.title}
-            placeholder='Title*'
+            placeholder="Title*"
             readOnly={!isEditing}
             ref={titleRef}
             onFocus={() => setIsEditing(true)}
             onBlur={handleUpdate}
-            title='Click to edit title'
+            title="Click to edit title"
             required
           />
           <Circle isCompleted={todo.isCompleted} />
         </h1>
 
         <textarea
-          className='textarea'
-          name='content'
+          className="textarea"
+          name="content"
           defaultValue={todo.content}
           readOnly={!isEditing}
           rows={3}
           maxLength={200}
-          placeholder='No Description...'
+          placeholder="No Description..."
           ref={contentRef}
           onFocus={() => setIsEditing(true)}
           onBlur={handleUpdate}
-          title='Click to edit content'
+          title="Click to edit content"
         />
 
         <DateCompleted todo={todo} />
       </div>
 
-      <div className='btn-container'>
+      <div className="btn-container">
         {isEditing && (
-          <button onClick={handleUpdate} className='btn btn-save fade-in'>
+          <button onClick={handleUpdate} className="btn btn-save fade-in">
             SAVE <EditIcon />
           </button>
         )}
 
         <button
           onClick={handleCompleted}
-          className={todo.isCompleted ? 'btn btn-check completed' : 'btn btn-check'}>
+          className={
+            todo.isCompleted ? 'btn btn-check completed' : 'btn btn-check'
+          }
+        >
           {todo.isCompleted ? 'UNDONE' : 'DONE'}
         </button>
 
-        <button onClick={handleDelete} className='btn btn-delete'>
+        <button onClick={handleDelete} className="btn btn-delete">
           DELETE
         </button>
 

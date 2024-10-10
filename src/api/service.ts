@@ -36,7 +36,11 @@ export function useTodo(id: string) {
     data: todo,
     error,
     isLoading,
-  } = useSWR<TodoType | null>(`${ENDPOINT}/${id}`, () => fetchTodoById(id), CONFIG_SWR);
+  } = useSWR<TodoType | null>(
+    `${ENDPOINT}/${id}`,
+    () => fetchTodoById(id),
+    CONFIG_SWR,
+  );
 
   return { todo, error, isLoading };
 }
@@ -53,7 +57,7 @@ export const createTodo = async (newTodo: CreateTodoType) => {
           method: 'POST',
           body: JSON.stringify({ ...newTodo, order: currentTodos.length + 1 }),
         },
-        TodoSchema
+        TodoSchema,
       );
 
       return [...currentTodos, createdTodo];
@@ -69,7 +73,7 @@ export const createTodo = async (newTodo: CreateTodoType) => {
       ],
       rollbackOnError: true,
       revalidate: false,
-    }
+    },
   );
 };
 
@@ -84,22 +88,25 @@ export const updateTodo = async (updatedTodo: TodoType) => {
   mutate(
     ENDPOINT,
     async (currentTodos: TodoType[] = []) => {
-      const updatedData = await fetchAPI<TodoType>(`${ENDPOINT}/${updatedTodo.id}`, {
-        method: 'PUT',
-        body: JSON.stringify(updatedTodo),
-      });
+      const updatedData = await fetchAPI<TodoType>(
+        `${ENDPOINT}/${updatedTodo.id}`,
+        {
+          method: 'PUT',
+          body: JSON.stringify(updatedTodo),
+        },
+      );
 
       const parsedUpdatedData = TodoSchema.parse(updatedData);
 
       return currentTodos.map((todo) =>
-        todo.id === updatedTodo.id ? parsedUpdatedData : todo
+        todo.id === updatedTodo.id ? parsedUpdatedData : todo,
       );
     },
     {
       optimisticData: updateLocalTodos,
       rollbackOnError: true,
       revalidate: false,
-    }
+    },
   );
 };
 
@@ -126,7 +133,7 @@ export const updateOrderTodos = async (todo1: TodoType, todo2: TodoType) => {
         swapTodosOrder(currentTodos, todo1.id, todo2.id),
       rollbackOnError: true,
       revalidate: false,
-    }
+    },
   );
 };
 
@@ -149,6 +156,6 @@ export const deleteTodo = async (id: string) => {
         removeTodoFromList(currentTodos, id),
       rollbackOnError: true,
       revalidate: false,
-    }
+    },
   );
 };

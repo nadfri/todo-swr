@@ -11,16 +11,16 @@ import SandBox from './components/SandBox/SandBox';
 export default function App() {
   return (
     <ErrorBoundary FallbackComponent={ErrorPage}>
-      <div className='App'>
+      <div className="App">
         <Header />
         <main>
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='todos' element={<Home />} />
-            <Route path='todos/:id' element={<TodoPage />} />
-            <Route path='sandbox' element={<SandBox />} />
-            <Route path='404' element={<ErrorPage notFound />} />
-            <Route path='*' element={<ErrorPage notFound />} />
+            <Route path="/" element={<Home />} />
+            <Route path="todos" element={<Home />} />
+            <Route path="todos/:id" element={<TodoPage />} />
+            <Route path="sandbox" element={<SandBox />} />
+            <Route path="404" element={<ErrorPage notFound />} />
+            <Route path="*" element={<ErrorPage notFound />} />
           </Routes>
         </main>
         <Footer />

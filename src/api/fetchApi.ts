@@ -1,7 +1,10 @@
 import { ZodError, ZodSchema } from 'zod';
 
 export class APIError extends Error {
-  constructor(message: string, public status?: number) {
+  constructor(
+    message: string,
+    public status?: number,
+  ) {
     super(message);
     this.name = 'APIError';
   }
@@ -10,7 +13,7 @@ export class APIError extends Error {
 export async function fetchAPI<T>(
   url: string,
   options: RequestInit = {},
-  schema?: ZodSchema<T>
+  schema?: ZodSchema<T>,
 ): Promise<T> {
   const defaultHeaders = {
     'Content-Type': 'application/json',
@@ -28,7 +31,10 @@ export async function fetchAPI<T>(
     const response = await fetch(url, mergedOptions);
 
     if (!response.ok) {
-      throw new APIError(`HTTP error! status: ${response.status}`, response.status);
+      throw new APIError(
+        `HTTP error! status: ${response.status}`,
+        response.status,
+      );
     }
 
     const data = await response.json();

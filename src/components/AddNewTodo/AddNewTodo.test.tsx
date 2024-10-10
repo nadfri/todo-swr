@@ -20,7 +20,7 @@ describe('AddNewTodo component', () => {
     render(
       <MemoryRouter>
         <AddNewTodo />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     const titleInput = screen.getByPlaceholderText('Title*');
@@ -49,7 +49,7 @@ describe('AddNewTodo component', () => {
     render(
       <MemoryRouter>
         <AddNewTodo />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     const contentInput = screen.getByPlaceholderText('Description...');

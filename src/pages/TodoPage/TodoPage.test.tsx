@@ -8,7 +8,7 @@ describe('TodoPage usecases', () => {
     render(
       <MemoryRouter initialEntries={[`/todos/${id}`]}>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
   it('should render the TodoPage when navigating to /todos/:id', async () => {

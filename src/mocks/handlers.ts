@@ -19,13 +19,9 @@ export const handlers = [
   }),
 
   http.get(`${ENDPOINT}/:id`, ({ params }) => {
-
-    console.log('params', params)
+    console.log('params', params);
     if (params.id === '2') {
-      return HttpResponse.json(
-        { message: 'Todo not found' },
-        { status: 404 }
-      );
+      return HttpResponse.json({ message: 'Todo not found' }, { status: 404 });
     }
 
     return HttpResponse.json({

@@ -35,7 +35,7 @@ describe('Todo Component', () => {
           selectedDragOverTodo={mockSelectedDragOverTodo}
           onDrop={mockOnDrop}
         />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     expect(screen.getByText('Test Todo')).toBeInTheDocument();
@@ -45,7 +45,7 @@ describe('Todo Component', () => {
     render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     const checkbox = await screen.findByRole('checkbox');
@@ -58,7 +58,7 @@ describe('Todo Component', () => {
     render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     const deleteButton = await screen.findByLabelText('delete todo');
@@ -79,7 +79,7 @@ describe('Todo Component', () => {
           selectedDragOverTodo={mockSelectedDragOverTodo}
           onDrop={mockOnDrop}
         />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     const todoItem = screen.getByRole('listitem');

@@ -13,7 +13,7 @@ describe('fetchAPI', () => {
       Promise.resolve({
         ok: true,
         json: () => Promise.resolve(mockData),
-      } as Response)
+      } as Response),
     );
 
     const result = await fetchAPI('https://api.example.com/data');
@@ -26,10 +26,12 @@ describe('fetchAPI', () => {
         ok: false,
         status: 404,
         statusText: 'Not Found',
-      } as Response)
+      } as Response),
     );
 
-    await expect(fetchAPI('https://api.example.com/data')).rejects.toThrow(APIError);
+    await expect(fetchAPI('https://api.example.com/data')).rejects.toThrow(
+      APIError,
+    );
   });
 
   it('should validate data with schema', async () => {
@@ -43,7 +45,7 @@ describe('fetchAPI', () => {
       Promise.resolve({
         ok: true,
         json: () => Promise.resolve(mockData),
-      } as Response)
+      } as Response),
     );
 
     const result = await fetchAPI('https://api.example.com/data', {}, schema);
@@ -61,32 +63,36 @@ describe('fetchAPI', () => {
       Promise.resolve({
         ok: true,
         json: () => Promise.resolve(mockData),
-      } as Response)
+      } as Response),
     );
 
-    await expect(fetchAPI('https://api.example.com/data', {}, schema)).rejects.toThrow(APIError);
+    await expect(
+      fetchAPI('https://api.example.com/data', {}, schema),
+    ).rejects.toThrow(APIError);
   });
 
   it('should throw an APIError for unexpected errors', async () => {
     global.fetch = vi.fn(() => Promise.reject(new Error('Network error')));
 
-    await expect(fetchAPI('https://api.example.com/data')).rejects.toThrow(APIError);
+    await expect(fetchAPI('https://api.example.com/data')).rejects.toThrow(
+      APIError,
+    );
   });
 
   it('should merge headers correctly', async () => {
     const mockData = { id: 1, name: 'Test' };
-    
+
     global.fetch = vi.fn(() =>
       Promise.resolve({
         ok: true,
         json: () => Promise.resolve(mockData),
-      } as Response)
+      } as Response),
     );
-  
+
     const customHeaders = { Authorization: 'Bearer token' };
-    
+
     await fetchAPI('https://api.example.com/data', { headers: customHeaders });
-  
+
     expect(global.fetch).toHaveBeenCalledWith(
       'https://api.example.com/data',
       expect.objectContaining({
@@ -94,7 +100,7 @@ describe('fetchAPI', () => {
           'Content-Type': 'application/json',
           Authorization: 'Bearer token',
         }),
-      })
+      }),
     );
   });
 });

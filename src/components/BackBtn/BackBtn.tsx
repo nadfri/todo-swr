@@ -9,8 +9,8 @@ export default function BackBtn() {
   };
 
   return (
-    <button className='BackBtn' onClick={handleClick}>
-      <span className='arrow'>↼</span> <span>BACK</span>
+    <button className="BackBtn" onClick={handleClick}>
+      <span className="arrow">↼</span> <span>BACK</span>
     </button>
   );
 }

@@ -16,7 +16,7 @@ describe('formatDateByDistance', () => {
     const spy = vi.spyOn(navigator, 'language', 'get').mockReturnValue('fr-FR');
 
     const result = formatDateByDistance(date);
-    expect(result).toBe("moins d’une minute");
+    expect(result).toBe('moins d’une minute');
     spy.mockRestore();
   });
 

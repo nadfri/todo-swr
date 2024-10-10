@@ -18,7 +18,7 @@ export default function Home() {
 
   if (!todos)
     return (
-      <div className='Home'>
+      <div className="Home">
         <h1>No todo today...</h1>
       </div>
     );
@@ -35,15 +35,16 @@ export default function Home() {
     dragOverTodoRef.current = null;
   };
 
-  const selectedDraggedTodo = (todo: TodoType | null) => (draggedTodoRef.current = todo);
+  const selectedDraggedTodo = (todo: TodoType | null) =>
+    (draggedTodoRef.current = todo);
   const selectedDragOverTodo = (todo: TodoType | null) =>
     (dragOverTodoRef.current = todo);
 
   return (
-    <div className='Home'>
+    <div className="Home">
       <AddNewTodo />
 
-      <ul className='todos-list'>
+      <ul className="todos-list">
         {todos.map((todo: TodoType) => (
           <Todo
             todo={todo}

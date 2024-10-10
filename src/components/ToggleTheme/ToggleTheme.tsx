@@ -19,11 +19,15 @@ export default function ToggleTheme() {
   };
 
   return (
-    <button className='ToggleTheme' onClick={toggleTheme} aria-label='toggle theme'>
+    <button
+      className="ToggleTheme"
+      onClick={toggleTheme}
+      aria-label={`Toggle theme to ${theme === 'light' ? 'dark' : 'light'}`}
+    >
       {theme === 'dark' ? (
-        <SunIcon className='SunIcon' />
+        <SunIcon className="SunIcon" />
       ) : (
-        <MoonIcon className='MoonIcon' />
+        <MoonIcon className="MoonIcon" />
       )}
     </button>
   );

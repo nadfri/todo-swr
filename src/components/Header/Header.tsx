@@ -4,9 +4,9 @@ import CounterTask from '../CounterTask/CounterTask';
 
 export default function Header() {
   return (
-    <header className='Header'>
-      <Link to='/' className='header-link'>
-        🚀 <span className='header-title'>TODO with SWR</span>
+    <header className="Header">
+      <Link to="/" className="header-link">
+        🚀 <span className="header-title">TODO with SWR</span>
       </Link>
 
       <CounterTask />

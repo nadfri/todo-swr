@@ -9,7 +9,7 @@ describe('Header', () => {
     render(
       <MemoryRouter>
         <Header />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     const linkElement = screen.getByRole('link', { name: /todo with swr/i });
