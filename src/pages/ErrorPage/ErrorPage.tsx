@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import './ErrorPage.scss';
 import { useErrorBoundary } from 'react-error-boundary';
+import { useTranslation } from 'react-i18next';
 
 type ErrorPageProps = {
   error?: unknown;
@@ -8,25 +9,26 @@ type ErrorPageProps = {
 };
 
 export default function ErrorPage({ error, notFound }: ErrorPageProps) {
+  const { t } = useTranslation();
   if (error) console.error(error);
 
   const { resetBoundary } = useErrorBoundary();
 
   return (
     <div className="ErrorPage">
-      <h1>Oops!</h1>
-      <p>Sorry, an unexpected error has occurred.</p>
+      <h1>{t('oops')}</h1>
+      <p>{t('sorry')}</p>
       <p>
         <i>
           {(error as Error)?.message ||
             (error as { statusText?: string })?.statusText}
         </i>
 
-        <i>{notFound && 'Page not found'}</i>
+        <i>{notFound && t('not-found')}</i>
       </p>
 
       <Link to="/" onClick={resetBoundary}>
-        Go back to the home page
+        {t('back-to-home')}
       </Link>
     </div>
   );

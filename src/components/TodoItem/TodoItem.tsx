@@ -1,4 +1,4 @@
-import './Todo.scss';
+import './TodoItem.scss';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import CrossIcon from '../Icons/CrossIcon';
@@ -7,21 +7,23 @@ import { TodoType } from '@/types/todoType';
 import { deleteTodo, updateTodo } from '@/api/service';
 import DateCompleted from '../DateCompleted/DateCompleted';
 import DragIcon from '../Icons/DragIcon';
+import { useTranslation } from 'react-i18next';
 
-type TodoProps = React.ComponentPropsWithoutRef<'li'> & {
+type TodoItemProps = React.ComponentPropsWithoutRef<'li'> & {
   todo: TodoType;
   selectedDraggedTodo: (todo: TodoType | null) => void;
   selectedDragOverTodo: (todo: TodoType | null) => void;
   onDrop: () => void;
 };
 
-export default function Todo({
+export default function TodoItem({
   todo,
   selectedDraggedTodo,
   selectedDragOverTodo,
   onDrop,
   ...rest
-}: TodoProps) {
+}: TodoItemProps) {
+  const { t } = useTranslation();
   const refLi = useRef<HTMLLIElement>(null);
 
   const handleCompleted = async () => {
@@ -72,7 +74,7 @@ export default function Todo({
   return (
     <li
       {...rest}
-      className="Todo"
+      className="TodoItem"
       ref={refLi}
       onDragStart={handleDragStart}
       onDragOver={handleDragOver}
@@ -97,7 +99,7 @@ export default function Todo({
         <button
           className="btn-delete"
           onClick={handleDelete}
-          aria-label="delete todo"
+          aria-label={t('aria-delete')}
         >
           <CrossIcon className="CrossIcon" />
         </button>

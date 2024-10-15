@@ -9,8 +9,10 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import AddNewTodo from '@/components/AddNewTodo/AddNewTodo';
 import { deleteTodo, updateTodo, useTodo } from '@/api/service';
 import DateCompleted from '@/components/DateCompleted/DateCompleted';
+import { useTranslation } from 'react-i18next';
 
 export default function TodoPage() {
+  const { t } = useTranslation();
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -75,12 +77,12 @@ export default function TodoPage() {
             type="text"
             maxLength={80}
             defaultValue={todo.title}
-            placeholder="Title*"
+            placeholder={t('title-placeholder')}
             readOnly={!isEditing}
             ref={titleRef}
             onFocus={() => setIsEditing(true)}
             onBlur={handleUpdate}
-            title="Click to edit title"
+            title={t('edit-title')}
             required
           />
           <Circle isCompleted={todo.isCompleted} />
@@ -93,11 +95,11 @@ export default function TodoPage() {
           readOnly={!isEditing}
           rows={3}
           maxLength={200}
-          placeholder="No Description..."
+          placeholder={t('no-description')}
           ref={contentRef}
           onFocus={() => setIsEditing(true)}
           onBlur={handleUpdate}
-          title="Click to edit content"
+          title={t('edit-description')}
         />
 
         <DateCompleted todo={todo} />
@@ -106,7 +108,7 @@ export default function TodoPage() {
       <div className="btn-container">
         {isEditing && (
           <button onClick={handleUpdate} className="btn btn-save fade-in">
-            SAVE <EditIcon />
+            {t('save')} <EditIcon />
           </button>
         )}
 
@@ -116,11 +118,11 @@ export default function TodoPage() {
             todo.isCompleted ? 'btn btn-check completed' : 'btn btn-check'
           }
         >
-          {todo.isCompleted ? 'UNDONE' : 'DONE'}
+          {todo.isCompleted ? t('undone') : t('done')}
         </button>
 
         <button onClick={handleDelete} className="btn btn-delete">
-          DELETE
+          {t('delete')}
         </button>
 
         <BackBtn />

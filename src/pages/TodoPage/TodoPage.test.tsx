@@ -31,7 +31,7 @@ describe('TodoPage usecases', () => {
     expect(textArea).toBeInTheDocument();
   });
 
-  it('should render the notFound page for unknown routes', async () => {
+  it('should render the notFound page for unknowhn routes', async () => {
     renderComponent('2');
 
     expect(await screen.findByText(/page not found/i)).toBeInTheDocument();
@@ -41,7 +41,7 @@ describe('TodoPage usecases', () => {
     renderComponent();
 
     const titleInput = await screen.findByRole('textbox', {
-      name: /Click to edit title/i,
+      name: /Click to edit description/i,
     });
 
     expect(titleInput).toHaveAttribute('readonly');

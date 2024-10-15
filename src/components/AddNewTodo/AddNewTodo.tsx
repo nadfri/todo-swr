@@ -4,6 +4,7 @@ import { createTodo } from '@/api/service';
 import CrossIcon from '../Icons/CrossIcon';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function AddNewTodo({
   redirectToHome,
@@ -12,6 +13,7 @@ export default function AddNewTodo({
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -46,7 +48,7 @@ export default function AddNewTodo({
           className="input"
           name="title-input"
           type="text"
-          placeholder="Title*"
+          placeholder={t('title-placeholder')}
           maxLength={80}
           autoComplete="off"
           required
@@ -57,10 +59,10 @@ export default function AddNewTodo({
           name="title-content"
           rows={3}
           maxLength={200}
-          placeholder="Description..."
+          placeholder={t('description-placeholder')}
         />
       </div>
-      <button type="submit" aria-label="Add new todo">
+      <button type="submit" aria-label={t('add-todo')}>
         <CrossIcon className="CrossIcon" />
       </button>
     </form>

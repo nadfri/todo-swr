@@ -12,6 +12,8 @@ describe('Header', () => {
       </MemoryRouter>,
     );
 
+    screen.debug();
+
     const linkElement = screen.getByRole('link', { name: /todo with swr/i });
     expect(linkElement).toBeInTheDocument();
   });

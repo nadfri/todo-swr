@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 type LoaderProps = React.SVGProps<SVGSVGElement> & {
   color1?: string;
   color2?: string;
@@ -8,9 +10,11 @@ export default function LoaderIcon({
   color2 = 'var(--success)',
   ...rest
 }: LoaderProps) {
+  const { t } = useTranslation();
+
   return (
     <svg
-      aria-label="loading"
+      aria-label={t('aria-loading')}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 100 100"
       preserveAspectRatio="xMidYMid"

@@ -6,7 +6,7 @@ import {
 } from '@testing-library/react';
 import { describe, it, vi } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
-import Todo from './Todo';
+import Todo from './TodoItem';
 import { TodoType } from '@/types/todoType';
 import userEvent from '@testing-library/user-event';
 import App from '@/App';
@@ -25,7 +25,7 @@ const mockSelectedDraggedTodo = vi.fn();
 const mockSelectedDragOverTodo = vi.fn();
 const mockOnDrop = vi.fn();
 
-describe('Todo Component', () => {
+describe('TodoItem Component', () => {
   it('renders the todo item', () => {
     render(
       <MemoryRouter>
@@ -61,7 +61,7 @@ describe('Todo Component', () => {
       </MemoryRouter>,
     );
 
-    const deleteButton = await screen.findByLabelText('delete todo');
+    const deleteButton = await screen.findByLabelText(/delete todo/i);
     const inputTitle = await screen.findByText(/Updated Title/i);
 
     expect(inputTitle).toBeInTheDocument();
