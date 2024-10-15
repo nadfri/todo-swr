@@ -12,6 +12,7 @@ This project aims to test caching with `useSWR` in a Todo List application. It a
 - **Vitest**: Fast unit testing framework
 - **react-testing-library**: Solution to test React Components
 - **msw** : The simplest way to mock a server to use in tests
+- **i18next** : Handle multi languages
 
 
 ## Prerequisites

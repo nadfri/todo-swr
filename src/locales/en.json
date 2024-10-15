@@ -1,0 +1,26 @@
+{
+  "translation": {
+    "header-title": "Todo With SWR",
+    "title-placeholder": "Title*",
+    "description-placeholder": "Description...",
+    "no-description": "No description",
+    "add-todo": "Add new Todo",
+    "back": "BACK",
+    "inProgress": "Still in progress...",
+    "aria-loading": "Loading",
+    "aria-delete": "Delete todo",
+    "light": "light",
+    "dark": "dark",
+    "oops": "Oops!",
+    "sorry": "Sorry, an unexpected error has occurred.",
+    "back-to-home": "Go back to the home page",
+    "no-todo": "No todo today...",
+    "edit-title": "Click to edit title",
+    "edit-description": "Click to edit description",
+    "save": "SAVE",
+    "done": "DONE",
+    "undone": "UNDONE",
+    "delete": "DELETE",
+    "not-found": "Page not found"
+  }
+}

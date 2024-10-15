@@ -2,6 +2,7 @@ import '@testing-library/jest-dom/vitest';
 import { afterAll, afterEach, beforeAll } from 'vitest';
 import { server } from './src/mocks/server';
 import { cleanup } from '@testing-library/react';
+import './i18n';
 
 beforeAll(() => server.listen());
 
