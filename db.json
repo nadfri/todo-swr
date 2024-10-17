@@ -7,11 +7,11 @@
       "isCompleted": false,
       "completedAt": null,
       "createdAt": "2021-01-03T10:00:00.000Z",
-      "order": 2
+      "order": 3
     },
     {
       "id": "3",
-      "order": 3,
+      "order": 4,
       "title": "Apprendre NextJS",
       "content": "Version 14",
       "isCompleted": true,
@@ -20,7 +20,7 @@
     },
     {
       "id": "4",
-      "order": 4,
+      "order": 2,
       "title": "Compare with react Query",
       "content": "",
       "isCompleted": true,

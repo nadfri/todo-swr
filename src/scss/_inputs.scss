@@ -6,7 +6,7 @@
   border: none;
   border-radius: 5px;
   outline: none;
-  box-shadow: inset 0 transparent;
+  box-shadow: inset 0 0 0 0 transparent;
   transition: box-shadow 0.3s;
 
   &:focus,
@@ -16,5 +16,9 @@
 
   &:focus:invalid {
     box-shadow: inset 0 0 0 1px var(--danger);
+  }
+
+  .ar & {
+    text-align: right;
   }
 }
