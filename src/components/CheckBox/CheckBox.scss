@@ -16,19 +16,12 @@
 
   &::before {
     content: '';
-    width: 11px;
-    aspect-ratio: 1;
-    border-radius: 2px;
-    opacity: 0;
     scale: 0;
-    transition:
-      0.2s scale,
-      0.2s opacity;
-    background-color: var(--success);
+    transition: 0.2s scale;
+    box-shadow: 0 0 1px 5px var(--success);
   }
 
   &:checked::before {
-    opacity: 1;
     scale: 1;
   }
 
