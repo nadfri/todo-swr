@@ -1,16 +1,17 @@
 import './FlagBtnSelector.scss';
-import { t } from 'i18next';
 import { useRef } from 'react';
 import FlagBtn from '../FlagBtn/FlagBtn';
 import useClickOutside from '@/hooks/useClickOutside';
-import i18n, { langs, LangType } from '@/locales/i18n';
+import { langs, LangType } from '@/locales/i18n';
 import { moveToLastInArray } from '@/utils/moveToLastInArray';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   closeSelector: () => void;
 };
 
 export default function FlagBtnSelector({ closeSelector }: Props) {
+  const { t, i18n } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
 
   const lang = i18n.language as LangType;
@@ -24,7 +25,6 @@ export default function FlagBtnSelector({ closeSelector }: Props) {
 
   const handleChangeLang = (lang: LangType) => {
     i18n.changeLanguage(lang);
-    document.documentElement.lang = lang;
     handleClose();
   };
 

@@ -7,8 +7,11 @@ import Footer from '@/components/Footer/Footer';
 import TodoPage from '@/pages/TodoPage/TodoPage';
 import ErrorPage from '@/pages/ErrorPage/ErrorPage';
 import SandBox from './components/SandBox/SandBox';
+import useUpdateHtmlLang from '@/hooks/useUpdateHtmlLang';
 
 export default function App() {
+  useUpdateHtmlLang();
+
   return (
     <ErrorBoundary FallbackComponent={ErrorPage}>
       <div className="App">
