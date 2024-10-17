@@ -6,7 +6,7 @@ const useUpdateHtmlLang = () => {
   const lang = i18n.language;
 
   useEffect(() => {
-    document.documentElement.lang = lang;
+    document.documentElement.lang = lang === 'enGB' ? 'en' : lang;
     document.body.classList.toggle('ar', lang === 'ar');
   }, [lang]);
 };
