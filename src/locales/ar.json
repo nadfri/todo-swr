@@ -1,0 +1,31 @@
+{
+  "translation": {
+    "header-title": "قائمة المهام مع SWR",
+    "title-placeholder": "*العنوان",
+    "description-placeholder": "...الوصف",
+    "no-description": "لا يوجد وصف.",
+    "add-todo": "أضف مهمة جديدة",
+    "back": "رجوع",
+    "inProgress": "...لا يزال قيد التقدم",
+    "aria-loading": "جارٍ التحميل...",
+    "aria-delete": "حذف المهمة",
+    "light": "فاتح",
+    "dark": "داكن",
+    "oops": "!عذرًا",
+    "sorry": ".عذرًا، حدث خطأ غير متوقع",
+    "back-to-home": "العودة إلى الصفحة الرئيسية",
+    "no-todo": "...لا توجد مهام اليوم",
+    "edit-title": "انقر لتعديل العنوان",
+    "edit-description": "انقر لتعديل الوصف",
+    "save": "حفظ",
+    "done": "تم",
+    "undone": "غير مكتمل",
+    "delete": "حذف",
+    "not-found": "الصفحة غير موجودة.",
+    "to-github": "إلى مستودع Github",
+    "select-lang": "اختر اللغة",
+    "select-fr": "اختر الفرنسية",
+    "select-enGB": "اختر الإنجليزية",
+    "select-ar": "اختر العربية"
+  }
+}

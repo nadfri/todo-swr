@@ -1,0 +1,11 @@
+.FlagBtn {
+  border: none;
+  background-color: transparent;
+  display: grid;
+  place-content: center;
+
+  .flag {
+    width: 40px;
+    transition: opacity 0.3s;
+  }
+}

@@ -21,6 +21,11 @@
     "done": "DONE",
     "undone": "UNDONE",
     "delete": "DELETE",
-    "not-found": "Page not found"
+    "not-found": "Page not found",
+    "to-github": "To Github repository",
+    "select-lang": "Select language",
+    "select-fr": "Select French",
+    "select-enGB": "Select English",
+    "select-ar": "Select Arabic"
   }
 }

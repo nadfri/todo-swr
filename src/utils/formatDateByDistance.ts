@@ -1,10 +1,9 @@
 import { formatDistanceToNow } from 'date-fns';
-import { enGB, fr } from 'date-fns/locale';
+import { enGB } from 'date-fns/locale';
+import i18n, { dateFnsLocales, LangType } from '@/locales/i18n';
 
 export function formatDateByDistance(date: Date): string {
-  const language = navigator.language;
+  const locale = dateFnsLocales[i18n.language as LangType] || enGB;
 
-  const locale = language.includes('fr') ? fr : enGB;
-
-  return formatDistanceToNow(date, { locale });
+  return formatDistanceToNow(date, { locale, addSuffix: true });
 }

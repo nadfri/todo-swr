@@ -3,6 +3,7 @@
   display: grid;
   place-content: center;
   height: 60px;
+  border-top: 1px solid var(--grey);
 
   background-color: var(--grey-dark);
 
@@ -10,9 +11,21 @@
     padding: 10px 6px;
     border-radius: 10px;
     transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
   a:hover {
     background-color: var(--grey-light);
+  }
+
+  .footer-toggle-container{
+    position: absolute;
+    top: 12px;
+    right: 5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
 }

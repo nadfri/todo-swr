@@ -16,8 +16,21 @@
   }
 }
 
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .fade-in {
   animation: fade-in 0.2s forwards;
+}
+
+.fade-out {
+  animation: fade-out 0.2s forwards;
 }
 
 @keyframes slide-out {
@@ -98,6 +111,34 @@
   100% {
     scale: 1;
   }
+}
+
+@keyframes scaleToOne {
+  0% {
+    scale: 0;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes scaleToZero {
+  0% {
+    scale: 1;
+  }
+  100% {
+    scale: 0;
+  }
+}
+
+.scaleToZero {
+  animation: scaleToZero 0.2s forwards;
+  transform-origin: bottom;
+}
+
+.scaleToOne {
+  animation: scaleToOne 0.2s forwards;
+  transform-origin: bottom;
 }
 
 @keyframes wave {
