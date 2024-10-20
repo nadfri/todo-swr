@@ -66,7 +66,8 @@ export default function TodoItem({
     refLi.current?.classList.remove('dragging');
   };
 
-  const handleDrop = () => {
+  const handleDrop = (e: React.DragEvent<HTMLLIElement>) => {
+    e.preventDefault();
     refLi.current?.classList.remove('drag-over');
     onDrop();
   };
@@ -82,6 +83,7 @@ export default function TodoItem({
       onDragLeave={handleDragLeave}
       onDragEnd={handleDragEnd}
       onDrop={handleDrop}
+      draggable
     >
       <DragIcon className="DragIcon" />
       <Link to={`/todos/${todo.id}`} className="todo-link" draggable={false}>

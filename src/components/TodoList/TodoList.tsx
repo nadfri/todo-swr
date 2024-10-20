@@ -35,7 +35,6 @@ export default function TodoList({ todos }: { todos: TodoType[] }) {
           selectedDraggedTodo={(todo) => selectedDraggedTodo(todo)}
           selectedDragOverTodo={(todo) => selectedDragOverTodo(todo)}
           onDrop={onDrop}
-          draggable
         />
       ))}
     </ul>
