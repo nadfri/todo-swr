@@ -7,7 +7,7 @@
       "isCompleted": false,
       "completedAt": null,
       "createdAt": "2021-01-03T10:00:00.000Z",
-      "order": 3
+      "order": 2
     },
     {
       "id": "3",
@@ -34,7 +34,7 @@
       "isCompleted": true,
       "completedAt": "2024-10-17T18:48:54.640Z",
       "createdAt": "2024-09-11T15:33:32.621Z",
-      "order": 2
+      "order": 3
     }
   ]
 }
