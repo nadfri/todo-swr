@@ -49,7 +49,7 @@ export default function TodoItem({
   };
 
   const handleDragOver = (e: React.DragEvent<HTMLLIElement>) => {
-    e.preventDefault();
+    e.preventDefault(); /*Allows drop*/
     selectedDragOverTodo(todo);
   };
 
@@ -67,7 +67,7 @@ export default function TodoItem({
   };
 
   const handleDrop = (e: React.DragEvent<HTMLLIElement>) => {
-    e.preventDefault();
+    e.preventDefault(); /*Allows drop*/
     refLi.current?.classList.remove('drag-over');
     onDrop();
   };
