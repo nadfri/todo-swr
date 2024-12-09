@@ -16,9 +16,7 @@ describe('FlagBtn', () => {
   it('displays the French flag icon', () => {
     render(<FlagBtn lang="fr" title="French" onClick={mockOnClick} />);
 
-    const flag = document.querySelector(
-      '#flag-icons-fr > g > path:nth-child(1)',
-    );
+    const flag = document.querySelector('#flag-icons-fr > g > path:nth-child(1)');
     expect(flag).toBeInTheDocument();
   });
 

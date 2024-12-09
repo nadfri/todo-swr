@@ -28,14 +28,7 @@ export default function LoaderIcon({
       }}
     >
       <g>
-        <circle
-          strokeWidth="2"
-          stroke={color1}
-          fill="none"
-          r="0"
-          cy="50"
-          cx="50"
-        >
+        <circle strokeWidth="2" stroke={color1} fill="none" r="0" cy="50" cx="50">
           <animate
             begin="0s"
             calcMode="spline"
@@ -57,14 +50,7 @@ export default function LoaderIcon({
             attributeName="opacity"
           />
         </circle>
-        <circle
-          strokeWidth="2"
-          stroke={color2}
-          fill="none"
-          r="0"
-          cy="50"
-          cx="50"
-        >
+        <circle strokeWidth="2" stroke={color2} fill="none" r="0" cy="50" cx="50">
           <animate
             begin="-0.5s"
             calcMode="spline"

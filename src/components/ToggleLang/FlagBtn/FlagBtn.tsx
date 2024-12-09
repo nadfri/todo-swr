@@ -20,12 +20,7 @@ export default function FlagBtn({ lang, title, onClick }: Props) {
   const FlagIcon = flags[lang];
 
   return (
-    <button
-      className="FlagBtn"
-      aria-label={title}
-      title={title}
-      onClick={onClick}
-    >
+    <button className="FlagBtn" aria-label={title} title={title} onClick={onClick}>
       <FlagIcon className="flag" />
     </button>
   );

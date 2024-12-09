@@ -16,8 +16,7 @@ const todos = [
     title: 'Lire un livre',
     content: "Lire le livre 'Clean Code' de Robert C. Martin",
     isCompleted: true,
-    completedAt:
-      'Tue Sep 17 2024 16:54:19 GMT+0200 (heure d’été d’Europe centrale)',
+    completedAt: 'Tue Sep 17 2024 16:54:19 GMT+0200 (heure d’été d’Europe centrale)',
     createdAt: '2021-01-03T10:00:00.000Z',
   },
 ];

@@ -13,11 +13,7 @@ export default function AR_FlagIcon(props: React.SVGProps<SVGSVGElement>) {
           <path fillOpacity=".7" d="M-85.3 0h682.6v512H-85.3z"></path>
         </clipPath>
       </defs>
-      <g
-        fillRule="evenodd"
-        clipPath="url(#sa-a)"
-        transform="translate(80) scale(.9375)"
-      >
+      <g fillRule="evenodd" clipPath="url(#sa-a)" transform="translate(80) scale(.9375)">
         <path fill="#199d00" d="M-128 0h768v512h-768z"></path>
         <path
           fill="#fff"

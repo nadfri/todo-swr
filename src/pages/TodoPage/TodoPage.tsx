@@ -70,9 +70,7 @@ export default function TodoPage() {
           <input
             name="title"
             className={
-              todo.isCompleted
-                ? 'input title-input completed'
-                : 'input title-input'
+              todo.isCompleted ? 'input title-input completed' : 'input title-input'
             }
             type="text"
             maxLength={80}
@@ -114,9 +112,7 @@ export default function TodoPage() {
 
         <button
           onClick={handleCompleted}
-          className={
-            todo.isCompleted ? 'btn btn-check completed' : 'btn btn-check'
-          }
+          className={todo.isCompleted ? 'btn btn-check completed' : 'btn btn-check'}
         >
           {todo.isCompleted ? t('undone') : t('done')}
         </button>

@@ -1,9 +1,9 @@
-@import './reset.scss';
-@import './root.scss';
-@import './fonts.scss';
-@import './animations.scss';
-@import './inputs.scss';
-@import './buttons.scss';
+@forward './reset.scss';
+@forward './root.scss';
+@forward './fonts.scss';
+@forward './animations.scss';
+@forward './inputs.scss';
+@forward './buttons.scss';
 
 body {
   min-height: 100svh;

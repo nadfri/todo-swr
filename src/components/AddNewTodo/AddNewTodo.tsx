@@ -6,11 +6,7 @@ import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-export default function AddNewTodo({
-  redirectToHome,
-}: {
-  redirectToHome?: boolean;
-}) {
+export default function AddNewTodo({ redirectToHome }: { redirectToHome?: boolean }) {
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
   const { t } = useTranslation();

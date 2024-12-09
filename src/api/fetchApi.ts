@@ -31,10 +31,7 @@ export async function fetchAPI<T>(
     const response = await fetch(url, mergedOptions);
 
     if (!response.ok) {
-      throw new APIError(
-        `HTTP error! status: ${response.status}`,
-        response.status,
-      );
+      throw new APIError(`HTTP error! status: ${response.status}`, response.status);
     }
 
     const data = await response.json();

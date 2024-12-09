@@ -12,7 +12,7 @@ type Props = {
 
 export default function FlagBtnSelector({ closeSelector }: Props) {
   const { t, i18n } = useTranslation();
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null!);
 
   const lang = i18n.language as LangType;
 

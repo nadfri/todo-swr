@@ -87,9 +87,7 @@ export default function TodoItem({
     >
       <DragIcon className="DragIcon" />
       <Link to={`/todos/${todo.id}`} className="todo-link" draggable={false}>
-        <span
-          className={todo.isCompleted ? 'todo-title completed' : 'todo-title'}
-        >
+        <span className={todo.isCompleted ? 'todo-title completed' : 'todo-title'}>
           {todo.title}{' '}
         </span>
 

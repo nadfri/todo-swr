@@ -36,11 +36,7 @@ export function useTodo(id: string) {
     data: todo,
     error,
     isLoading,
-  } = useSWR<TodoType | null>(
-    `${ENDPOINT}/${id}`,
-    () => fetchTodoById(id),
-    CONFIG_SWR,
-  );
+  } = useSWR<TodoType | null>(`${ENDPOINT}/${id}`, () => fetchTodoById(id), CONFIG_SWR);
 
   return { todo, error, isLoading };
 }
@@ -88,13 +84,10 @@ export const updateTodo = async (updatedTodo: TodoType) => {
   mutate(
     ENDPOINT,
     async (currentTodos: TodoType[] = []) => {
-      const updatedData = await fetchAPI<TodoType>(
-        `${ENDPOINT}/${updatedTodo.id}`,
-        {
-          method: 'PUT',
-          body: JSON.stringify(updatedTodo),
-        },
-      );
+      const updatedData = await fetchAPI<TodoType>(`${ENDPOINT}/${updatedTodo.id}`, {
+        method: 'PUT',
+        body: JSON.stringify(updatedTodo),
+      });
 
       const parsedUpdatedData = TodoSchema.parse(updatedData);
 

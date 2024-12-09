@@ -17,9 +17,7 @@ export default function ToggleLang() {
         title={t('select-lang')}
       />
 
-      {isSelectorOpen && (
-        <FlagBtnSelector closeSelector={() => setSelectorOpen(false)} />
-      )}
+      {isSelectorOpen && <FlagBtnSelector closeSelector={() => setSelectorOpen(false)} />}
     </div>
   );
 }

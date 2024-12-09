@@ -20,8 +20,7 @@ export default function ErrorPage({ error, notFound }: ErrorPageProps) {
       <p>{t('sorry')}</p>
       <p>
         <i>
-          {(error as Error)?.message ||
-            (error as { statusText?: string })?.statusText}
+          {(error as Error)?.message || (error as { statusText?: string })?.statusText}
         </i>
 
         <i>{notFound && t('not-found')}</i>

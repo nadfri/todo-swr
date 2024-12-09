@@ -29,9 +29,7 @@ describe('fetchAPI', () => {
       } as Response),
     );
 
-    await expect(fetchAPI('https://api.example.com/data')).rejects.toThrow(
-      APIError,
-    );
+    await expect(fetchAPI('https://api.example.com/data')).rejects.toThrow(APIError);
   });
 
   it('should validate data with schema', async () => {
@@ -66,17 +64,15 @@ describe('fetchAPI', () => {
       } as Response),
     );
 
-    await expect(
-      fetchAPI('https://api.example.com/data', {}, schema),
-    ).rejects.toThrow(APIError);
+    await expect(fetchAPI('https://api.example.com/data', {}, schema)).rejects.toThrow(
+      APIError,
+    );
   });
 
   it('should throw an APIError for unexpected errors', async () => {
     global.fetch = vi.fn(() => Promise.reject(new Error('Network error')));
 
-    await expect(fetchAPI('https://api.example.com/data')).rejects.toThrow(
-      APIError,
-    );
+    await expect(fetchAPI('https://api.example.com/data')).rejects.toThrow(APIError);
   });
 
   it('should merge headers correctly', async () => {

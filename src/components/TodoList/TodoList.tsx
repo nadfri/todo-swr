@@ -20,8 +20,7 @@ export default function TodoList({ todos }: { todos: TodoType[] }) {
     dragOverTodoRef.current = null;
   };
 
-  const selectedDraggedTodo = (todo: TodoType | null) =>
-    (draggedTodoRef.current = todo);
+  const selectedDraggedTodo = (todo: TodoType | null) => (draggedTodoRef.current = todo);
 
   const selectedDragOverTodo = (todo: TodoType | null) =>
     (dragOverTodoRef.current = todo);

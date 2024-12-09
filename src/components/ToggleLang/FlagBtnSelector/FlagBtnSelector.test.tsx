@@ -16,8 +16,7 @@ vi.mock('@/utils/moveToLastInArray', () => ({
 describe('FlagBtnSelector', () => {
   const closeSelector = vi.fn();
 
-  const renderComponent = () =>
-    render(<FlagBtnSelector closeSelector={closeSelector} />);
+  const renderComponent = () => render(<FlagBtnSelector closeSelector={closeSelector} />);
 
   it('should render all language buttons', () => {
     renderComponent();

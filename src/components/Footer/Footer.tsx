@@ -8,11 +8,7 @@ export default function Footer() {
   const { t } = useTranslation();
   return (
     <footer className="Footer">
-      <a
-        target="_blank"
-        href="https://github.com/nadfri/todo-swr"
-        title={t('to-github')}
-      >
+      <a target="_blank" href="https://github.com/nadfri/todo-swr" title={t('to-github')}>
         NadfriJS @2024 <GithubIcon className="github" />
       </a>
 
